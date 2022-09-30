@@ -7,54 +7,51 @@
 
 import UIKit
 
-class KeyboardViewController: UIInputViewController {
+final class KeyboardViewController: UIInputViewController {
+    @IBOutlet private var letterButtons: [UIButton]!
 
-    @IBOutlet var nextKeyboardButton: UIButton!
-    
-    override func updateViewConstraints() {
-        super.updateViewConstraints()
-        
-        // Add custom view sizing constraints here
-    }
-    
+    private var keyboardView: UIView!
+
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        // Perform custom UI setup here
-        self.nextKeyboardButton = UIButton(type: .system)
-        
-        self.nextKeyboardButton.setTitle(NSLocalizedString("Next Keyboard", comment: "Title for 'Next Keyboard' button"), for: [])
-        self.nextKeyboardButton.sizeToFit()
-        self.nextKeyboardButton.translatesAutoresizingMaskIntoConstraints = false
-        
-        self.nextKeyboardButton.addTarget(self, action: #selector(handleInputModeList(from:with:)), for: .allTouchEvents)
-        
-        self.view.addSubview(self.nextKeyboardButton)
-        
-        self.nextKeyboardButton.leftAnchor.constraint(equalTo: self.view.leftAnchor).isActive = true
-        self.nextKeyboardButton.bottomAnchor.constraint(equalTo: self.view.bottomAnchor).isActive = true
-    }
-    
-    override func viewWillLayoutSubviews() {
-        self.nextKeyboardButton.isHidden = !self.needsInputModeSwitchKey
-        super.viewWillLayoutSubviews()
-    }
-    
-    override func textWillChange(_ textInput: UITextInput?) {
-        // The app is about to change the document's contents. Perform any preparation here.
-    }
-    
-    override func textDidChange(_ textInput: UITextInput?) {
-        // The app has just changed the document's contents, the document context has been updated.
-        
-        var textColor: UIColor
-        let proxy = self.textDocumentProxy
-        if proxy.keyboardAppearance == UIKeyboardAppearance.dark {
-            textColor = UIColor.white
-        } else {
-            textColor = UIColor.black
-        }
-        self.nextKeyboardButton.setTitleColor(textColor, for: [])
+
+        configureKeyboardView()
     }
 
+    @IBAction
+    private func didTapLetterButton(_ sender: UIButton) {
+        guard let letter = sender.titleLabel?.text else { return }
+        let proxy = textDocumentProxy
+        proxy.insertText(letter)
+    }
+}
+
+// MARK: - UI
+
+private extension KeyboardViewController {
+    func configureKeyboardView() {
+        let bundle = Bundle(for: type(of: self))
+        let nib = UINib(nibName: "KeyboardView", bundle: bundle)
+        keyboardView = nib.instantiate(withOwner: self).first as? UIView
+        keyboardView.translatesAutoresizingMaskIntoConstraints = false
+        view.addSubview(keyboardView)
+        NSLayoutConstraint.activate([
+            keyboardView.topAnchor.constraint(equalTo: view.topAnchor),
+            keyboardView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
+            keyboardView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
+            keyboardView.bottomAnchor.constraint(equalTo: view.bottomAnchor),
+        ])
+        keyboardView.backgroundColor = view.backgroundColor
+        configureButtons()
+    }
+
+    func configureButtons() {
+        letterButtons.forEach { button in
+            button.backgroundColor = .tertiarySystemGroupedBackground
+            button.layer.shadowColor = UIColor(red: 0, green: 0, blue: 0, alpha: 0.15).cgColor
+            button.layer.shadowOpacity = 1
+            button.layer.shadowRadius = 6
+            button.layer.shadowOffset = CGSize(width: 0, height: 2)
+        }
+    }
 }

@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		5D3FAEA728E6B1300035396F /* KeyboardViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D3FAEA628E6B1300035396F /* KeyboardViewController.swift */; };
 		5D3FAEAB28E6B1300035396F /* KoreanKeyboard.appex in Embed Foundation Extensions */ = {isa = PBXBuildFile; fileRef = 5D3FAEA428E6B1300035396F /* KoreanKeyboard.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
+		5D3FAEB128E6B2990035396F /* KeyboardView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5D3FAEB028E6B2990035396F /* KeyboardView.xib */; };
 		63487F3828E2EA5E0033CF32 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63487F3728E2EA5E0033CF32 /* AppDelegate.swift */; };
 		63487F3A28E2EA5E0033CF32 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63487F3928E2EA5E0033CF32 /* SceneDelegate.swift */; };
 		63487F3C28E2EA5E0033CF32 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63487F3B28E2EA5E0033CF32 /* ViewController.swift */; };
@@ -45,6 +46,7 @@
 		5D3FAEA428E6B1300035396F /* KoreanKeyboard.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = KoreanKeyboard.appex; sourceTree = BUILT_PRODUCTS_DIR; };
 		5D3FAEA628E6B1300035396F /* KeyboardViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeyboardViewController.swift; sourceTree = "<group>"; };
 		5D3FAEA828E6B1300035396F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		5D3FAEB028E6B2990035396F /* KeyboardView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = KeyboardView.xib; sourceTree = "<group>"; };
 		63487F3428E2EA5E0033CF32 /* K-Keyboard.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "K-Keyboard.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		63487F3728E2EA5E0033CF32 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		63487F3928E2EA5E0033CF32 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -77,6 +79,7 @@
 			isa = PBXGroup;
 			children = (
 				5D3FAEA628E6B1300035396F /* KeyboardViewController.swift */,
+				5D3FAEB028E6B2990035396F /* KeyboardView.xib */,
 				5D3FAEA828E6B1300035396F /* Info.plist */,
 			);
 			path = KoreanKeyboard;
@@ -227,6 +230,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				5D3FAEB128E6B2990035396F /* KeyboardView.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
