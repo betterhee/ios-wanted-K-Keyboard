@@ -6,9 +6,11 @@
 //
 
 import UIKit
+import os
 
 final class KeyboardViewController: UIInputViewController {
     @IBOutlet private var letterButtons: [UIButton]!
+    @IBOutlet var shiftButton: UIButton!
 
     private var keyboardView: UIView!
 
@@ -20,9 +22,21 @@ final class KeyboardViewController: UIInputViewController {
 
     @IBAction
     private func didTapLetterButton(_ sender: UIButton) {
+        if shiftButton.isSelected { didTapShiftButton() }
+
         guard let letter = sender.titleLabel?.text else { return }
-        let proxy = textDocumentProxy
-        proxy.insertText(letter)
+        textDocumentProxy.insertText(letter)
+    }
+
+    @IBAction
+    private func didTapShiftButton() {
+        Logger.keyboard.debug(#function)
+        shiftButton.isSelected.toggle()
+        letterButtons.forEach { button in
+            guard let letter = button.titleLabel?.text,
+                  let caseSensitiveLetter = CaseSensitiveLetter(rawValue: letter) else { return }
+            button.setTitle(caseSensitiveLetter.shiftedLetter.rawValue, for: .normal)
+        }
     }
 }
 
@@ -55,3 +69,4 @@ private extension KeyboardViewController {
         }
     }
 }
+

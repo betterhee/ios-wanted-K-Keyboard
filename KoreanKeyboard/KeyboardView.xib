@@ -11,6 +11,7 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="KeyboardViewController" customModule="KoreanKeyboard" customModuleProvider="target">
             <connections>
+                <outlet property="shiftButton" destination="Pq5-bU-GLj" id="PQd-80-Nv4"/>
                 <outletCollection property="letterButtons" destination="HNi-Sd-odz" collectionClass="NSMutableArray" id="i0f-N8-2L1"/>
                 <outletCollection property="letterButtons" destination="kyq-WB-UIN" collectionClass="NSMutableArray" id="CmJ-NZ-rM7"/>
                 <outletCollection property="letterButtons" destination="504-FB-eEp" collectionClass="NSMutableArray" id="DhI-1w-v3u"/>
@@ -226,6 +227,9 @@
                                     <accessibility key="accessibilityConfiguration" label="Shift"/>
                                     <state key="normal" title="Button"/>
                                     <buttonConfiguration key="configuration" style="plain" image="shift" catalog="system" title=""/>
+                                    <connections>
+                                        <action selector="didTapShiftButton" destination="-1" eventType="touchUpInside" id="Vre-rE-PbW"/>
+                                    </connections>
                                 </button>
                                 <view contentMode="scaleToFill" horizontalHuggingPriority="251" horizontalCompressionResistancePriority="749" translatesAutoresizingMaskIntoConstraints="NO" id="jEH-A0-BbM">
                                     <rect key="frame" x="42.666666666666664" y="0.0" width="11" height="38.666666666666664"/>

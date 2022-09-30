@@ -15,7 +15,7 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "5DA460B528E58CCD00EE4C4B"
+               BlueprintIdentifier = "5D3FAEA328E6B1300035396F"
                BuildableName = "KoreanKeyboard.appex"
                BlueprintName = "KoreanKeyboard"
                ReferencedContainer = "container:K-Keyboard.xcodeproj">
