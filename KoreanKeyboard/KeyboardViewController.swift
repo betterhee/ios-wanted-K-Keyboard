@@ -38,6 +38,13 @@ final class KeyboardViewController: UIInputViewController {
             button.setTitle(caseSensitiveLetter.shiftedLetter.rawValue, for: .normal)
         }
     }
+
+    @IBAction
+    private func didTapEnterButton() {
+        if shiftButton.isSelected { didTapShiftButton() }
+
+        textDocumentProxy.insertText("\n")
+    }
 }
 
 // MARK: - UI

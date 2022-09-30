@@ -309,23 +309,27 @@
                             <rect key="frame" x="0.0" y="121.66666666666667" width="390" height="38.333333333333329"/>
                             <subviews>
                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="nkc-hm-nqg">
-                                    <rect key="frame" x="0.0" y="0.0" width="105" height="38.333333333333336"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="114" height="38.333333333333336"/>
                                     <state key="normal" title="Button"/>
                                     <buttonConfiguration key="configuration" style="plain" title="123"/>
                                 </button>
                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ueI-db-6NJ">
-                                    <rect key="frame" x="107" y="0.0" width="176" height="38.333333333333336"/>
+                                    <rect key="frame" x="115.99999999999999" y="0.0" width="152.66666666666663" height="38.333333333333336"/>
                                     <state key="normal" title="Button"/>
                                     <buttonConfiguration key="configuration" style="plain" title="Space"/>
                                 </button>
-                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="gYm-wI-1hX">
-                                    <rect key="frame" x="285" y="0.0" width="105" height="38.333333333333336"/>
+                                <button opaque="NO" contentMode="scaleToFill" horizontalCompressionResistancePriority="751" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="OYI-X9-HDY" userLabel="Back">
+                                    <rect key="frame" x="270.66666666666669" y="0.0" width="119.33333333333331" height="38.333333333333336"/>
+                                    <accessibility key="accessibilityConfiguration" label="Back"/>
                                     <state key="normal" title="Button"/>
-                                    <buttonConfiguration key="configuration" style="plain" title="Enter"/>
+                                    <buttonConfiguration key="configuration" style="plain" image="arrow.turn.down.left" catalog="system" title=""/>
+                                    <connections>
+                                        <action selector="didTapEnterButton" destination="-1" eventType="touchUpInside" id="Peg-ES-Fd5"/>
+                                    </connections>
                                 </button>
                             </subviews>
                             <constraints>
-                                <constraint firstItem="nkc-hm-nqg" firstAttribute="width" secondItem="gYm-wI-1hX" secondAttribute="width" id="T6q-3g-hJq"/>
+                                <constraint firstItem="OYI-X9-HDY" firstAttribute="width" secondItem="nkc-hm-nqg" secondAttribute="width" multiplier="1.04748" id="MO2-Nu-Sq4"/>
                             </constraints>
                         </stackView>
                     </subviews>
@@ -362,6 +366,7 @@
         </view>
     </objects>
     <resources>
+        <image name="arrow.turn.down.left" catalog="system" width="128" height="99"/>
         <image name="delete.left" catalog="system" width="128" height="102"/>
         <image name="shift" catalog="system" width="128" height="106"/>
         <systemColor name="systemBackgroundColor">
