@@ -9,33 +9,49 @@ import UIKit
 import os
 
 final class KeyboardViewController: UIInputViewController {
+
+    // MARK: Properties
+
     @IBOutlet private var letterButtons: [UIButton]!
-    @IBOutlet var shiftButton: UIButton!
+    @IBOutlet private var shiftButton: UIButton!
 
     private var keyboardView: UIView!
+    private var keyboard: HangulKeyboard!
+
+    // MARK: View Life Cycle
 
     override func viewDidLoad() {
         super.viewDidLoad()
 
+        configureKeyboard()
         configureKeyboardView()
     }
+
+    private func configureKeyboard() {
+        let beforeInput = textDocumentProxy.documentContextBeforeInput
+        keyboard = HangulKeyboard(beforeInput: beforeInput)
+    }
+
+    // MARK: Actions
 
     @IBAction
     private func didTapLetterButton(_ sender: UIButton) {
         if shiftButton.isSelected { didTapShiftButton() }
 
-        guard let letter = sender.titleLabel?.text else { return }
-        textDocumentProxy.insertText(letter)
+        guard let keyCommand = sender.titleLabel?.text else { return }
+        let result = keyboard.input(keyCommand)
+        textDocumentProxy.replace(result.0, with: result.1)
     }
 
     @IBAction
     private func didTapShiftButton() {
         Logger.keyboard.debug(#function)
         shiftButton.isSelected.toggle()
+
         letterButtons.forEach { button in
-            guard let letter = button.titleLabel?.text,
-                  let caseSensitiveLetter = CaseSensitiveLetter(rawValue: letter) else { return }
-            button.setTitle(caseSensitiveLetter.shiftedLetter.rawValue, for: .normal)
+            guard let title = button.titleLabel?.text,
+                  let keyCommand = HangulKeyCommand(rawValue: title) else { return }
+            button.setTitle(keyCommand.shifted.rawValue, for: .normal)
         }
     }
 
@@ -43,13 +59,24 @@ final class KeyboardViewController: UIInputViewController {
     private func didTapEnterButton() {
         if shiftButton.isSelected { didTapShiftButton() }
 
-        textDocumentProxy.insertText("\n")
+        let output = keyboard.input("\n")
+        textDocumentProxy.replace(output.0, with: output.1)
     }
+
+    @IBAction
+    private func didTapSpaceButton() {
+        if shiftButton.isSelected { didTapShiftButton() }
+
+        let result = keyboard.input(" ")
+        textDocumentProxy.replace(result.0, with: result.1)
+    }
+
 }
 
 // MARK: - UI
 
 private extension KeyboardViewController {
+
     func configureKeyboardView() {
         let bundle = Bundle(for: type(of: self))
         let nib = UINib(nibName: "KeyboardView", bundle: bundle)
@@ -75,5 +102,6 @@ private extension KeyboardViewController {
             button.layer.shadowOffset = CGSize(width: 0, height: 2)
         }
     }
+
 }
 

@@ -317,6 +317,9 @@
                                     <rect key="frame" x="115.99999999999999" y="0.0" width="152.66666666666663" height="38.333333333333336"/>
                                     <state key="normal" title="Button"/>
                                     <buttonConfiguration key="configuration" style="plain" title="Space"/>
+                                    <connections>
+                                        <action selector="didTapSpaceButton" destination="-1" eventType="touchUpInside" id="dxw-CU-wbi"/>
+                                    </connections>
                                 </button>
                                 <button opaque="NO" contentMode="scaleToFill" horizontalCompressionResistancePriority="751" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="OYI-X9-HDY" userLabel="Back">
                                     <rect key="frame" x="270.66666666666669" y="0.0" width="119.33333333333331" height="38.333333333333336"/>
