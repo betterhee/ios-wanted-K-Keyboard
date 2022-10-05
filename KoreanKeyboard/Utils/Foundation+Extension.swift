@@ -8,7 +8,6 @@
 import Foundation
 
 extension String {
-
     /// 초성에 올 수 있는 낱글자인지 여부를 나타내는 Boolean 값입니다.
     var isLeadingConsonant: Bool {
         HangulComponentsTable.leadingConsonant.contains(self)
@@ -27,22 +26,17 @@ extension String {
     var firstCharacterAsString: String {
         return first!.string
     }
-
 }
 
 extension Character {
-
     var string: String {
         return String(self)
     }
-
 }
 
 extension Array where Element == Unicode.Scalar {
-
     var string: String {
         self.map(String.init)
             .joined()
     }
-    
 }

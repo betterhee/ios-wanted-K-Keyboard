@@ -2,7 +2,7 @@
 //  HangulKeyCommand.swift
 //  KoreanKeyboard
 //
-//  Created by 홍다희 on 2022/10/03.
+//  Created by 홍다희 on 2022/10/05.
 //
 
 import Foundation
@@ -41,10 +41,10 @@ enum HangulKeyCommand: String {
     case ㅠ
     case ㅜ
     case ㅡ
-    case space = " "
-    case nextLine = "\n"
-    case back
+}
 
+extension HangulKeyCommand {
+    /// 중성에 해당하는 키인지 여부를 나타내는 Booelan 값입니다.
     var isVowel: Bool {
         rawValue.isVowel
     }

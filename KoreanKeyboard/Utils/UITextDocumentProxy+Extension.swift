@@ -8,7 +8,6 @@
 import UIKit
 
 extension UITextDocumentProxy {
-
     /// 지정된 텍스트를 다른 텍스트로 대체합니다.
     func replace(_ originalText: String, with newText: String) {
         let offset = originalText.count
@@ -21,6 +20,5 @@ extension UITextDocumentProxy {
     func deleteBackward(_ k: Int) {
         for _ in 0..<k { deleteBackward() }
     }
-
 }
 

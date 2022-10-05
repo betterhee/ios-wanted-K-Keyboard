@@ -9,12 +9,13 @@
 /* Begin PBXBuildFile section */
 		5D1AE80D28EBEFC8005C37F5 /* Foundation+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D1AE80C28EBEFC8005C37F5 /* Foundation+Extension.swift */; };
 		5D1AE81028EBF005005C37F5 /* HangulComponents.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D1AE80F28EBF005005C37F5 /* HangulComponents.swift */; };
+		5D1AE82128ED59AD005C37F5 /* HangulKeyCommand.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D1AE82028ED59AD005C37F5 /* HangulKeyCommand.swift */; };
 		5D3FAEA728E6B1300035396F /* KeyboardViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D3FAEA628E6B1300035396F /* KeyboardViewController.swift */; };
 		5D3FAEAB28E6B1300035396F /* KoreanKeyboard.appex in Embed Foundation Extensions */ = {isa = PBXBuildFile; fileRef = 5D3FAEA428E6B1300035396F /* KoreanKeyboard.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		5D3FAEB128E6B2990035396F /* KeyboardView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5D3FAEB028E6B2990035396F /* KeyboardView.xib */; };
 		5D3FAEB628E6EF260035396F /* Logger+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D3FAEB528E6EF260035396F /* Logger+Extension.swift */; };
-		5D7479A728EAA398009E5A09 /* HangulKeyboard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D7479A628EAA398009E5A09 /* HangulKeyboard.swift */; };
-		5D7479A928EB2249009E5A09 /* HangulKeyCommand.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D7479A828EB2249009E5A09 /* HangulKeyCommand.swift */; };
+		5D7479A728EAA398009E5A09 /* Keyboard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D7479A628EAA398009E5A09 /* Keyboard.swift */; };
+		5D7479A928EB2249009E5A09 /* KeyCommand.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D7479A828EB2249009E5A09 /* KeyCommand.swift */; };
 		5D7479AC28EB2ABE009E5A09 /* UITextDocumentProxy+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D7479AB28EB2ABE009E5A09 /* UITextDocumentProxy+Extension.swift */; };
 		5D7479AE28EB418F009E5A09 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D7479AD28EB418F009E5A09 /* Constants.swift */; };
 		63487F3828E2EA5E0033CF32 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63487F3728E2EA5E0033CF32 /* AppDelegate.swift */; };
@@ -52,13 +53,14 @@
 /* Begin PBXFileReference section */
 		5D1AE80C28EBEFC8005C37F5 /* Foundation+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Foundation+Extension.swift"; sourceTree = "<group>"; };
 		5D1AE80F28EBF005005C37F5 /* HangulComponents.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HangulComponents.swift; sourceTree = "<group>"; };
+		5D1AE82028ED59AD005C37F5 /* HangulKeyCommand.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HangulKeyCommand.swift; sourceTree = "<group>"; };
 		5D3FAEA428E6B1300035396F /* KoreanKeyboard.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = KoreanKeyboard.appex; sourceTree = BUILT_PRODUCTS_DIR; };
 		5D3FAEA628E6B1300035396F /* KeyboardViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeyboardViewController.swift; sourceTree = "<group>"; };
 		5D3FAEA828E6B1300035396F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		5D3FAEB028E6B2990035396F /* KeyboardView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = KeyboardView.xib; sourceTree = "<group>"; };
 		5D3FAEB528E6EF260035396F /* Logger+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Logger+Extension.swift"; sourceTree = "<group>"; };
-		5D7479A628EAA398009E5A09 /* HangulKeyboard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HangulKeyboard.swift; sourceTree = "<group>"; };
-		5D7479A828EB2249009E5A09 /* HangulKeyCommand.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HangulKeyCommand.swift; sourceTree = "<group>"; };
+		5D7479A628EAA398009E5A09 /* Keyboard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Keyboard.swift; sourceTree = "<group>"; };
+		5D7479A828EB2249009E5A09 /* KeyCommand.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeyCommand.swift; sourceTree = "<group>"; };
 		5D7479AB28EB2ABE009E5A09 /* UITextDocumentProxy+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UITextDocumentProxy+Extension.swift"; sourceTree = "<group>"; };
 		5D7479AD28EB418F009E5A09 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		63487F3428E2EA5E0033CF32 /* K-Keyboard.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "K-Keyboard.app"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -108,13 +110,21 @@
 			path = "View Controllers";
 			sourceTree = "<group>";
 		};
+		5D1AE81F28ED4B91005C37F5 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				5D3FAEB028E6B2990035396F /* KeyboardView.xib */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
 		5D3FAEA528E6B1300035396F /* KoreanKeyboard */ = {
 			isa = PBXGroup;
 			children = (
 				5D7479AA28EB2311009E5A09 /* Models */,
 				5D1AE81128EBF041005C37F5 /* View Controllers */,
+				5D1AE81F28ED4B91005C37F5 /* Views */,
 				5D1AE80E28EBEFE2005C37F5 /* Utils */,
-				5D3FAEB028E6B2990035396F /* KeyboardView.xib */,
 				5D3FAEA828E6B1300035396F /* Info.plist */,
 			);
 			path = KoreanKeyboard;
@@ -123,8 +133,9 @@
 		5D7479AA28EB2311009E5A09 /* Models */ = {
 			isa = PBXGroup;
 			children = (
-				5D7479A628EAA398009E5A09 /* HangulKeyboard.swift */,
-				5D7479A828EB2249009E5A09 /* HangulKeyCommand.swift */,
+				5D7479A628EAA398009E5A09 /* Keyboard.swift */,
+				5D7479A828EB2249009E5A09 /* KeyCommand.swift */,
+				5D1AE82028ED59AD005C37F5 /* HangulKeyCommand.swift */,
 				5D1AE80F28EBF005005C37F5 /* HangulComponents.swift */,
 			);
 			path = Models;
@@ -296,11 +307,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				5D1AE82128ED59AD005C37F5 /* HangulKeyCommand.swift in Sources */,
 				5D1AE80D28EBEFC8005C37F5 /* Foundation+Extension.swift in Sources */,
 				5D3FAEA728E6B1300035396F /* KeyboardViewController.swift in Sources */,
-				5D7479A928EB2249009E5A09 /* HangulKeyCommand.swift in Sources */,
+				5D7479A928EB2249009E5A09 /* KeyCommand.swift in Sources */,
 				5D3FAEB628E6EF260035396F /* Logger+Extension.swift in Sources */,
-				5D7479A728EAA398009E5A09 /* HangulKeyboard.swift in Sources */,
+				5D7479A728EAA398009E5A09 /* Keyboard.swift in Sources */,
 				5D1AE81028EBF005005C37F5 /* HangulComponents.swift in Sources */,
 				5D7479AE28EB418F009E5A09 /* Constants.swift in Sources */,
 				5D7479AC28EB2ABE009E5A09 /* UITextDocumentProxy+Extension.swift in Sources */,

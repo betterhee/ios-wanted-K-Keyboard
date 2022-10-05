@@ -16,7 +16,7 @@ final class KeyboardViewController: UIInputViewController {
     @IBOutlet private var shiftButton: UIButton!
 
     private var keyboardView: UIView!
-    private var keyboard: HangulKeyboard!
+    private var keyboard: Keyboard!
 
     // MARK: View Life Cycle
 
@@ -28,8 +28,8 @@ final class KeyboardViewController: UIInputViewController {
     }
 
     private func configureKeyboard() {
-        let beforeInput = textDocumentProxy.documentContextBeforeInput
-        keyboard = HangulKeyboard(beforeInput: beforeInput)
+        let beforeText = textDocumentProxy.documentContextBeforeInput
+        keyboard = Keyboard(beforeText: beforeText)
     }
 
     // MARK: Actions
@@ -39,9 +39,9 @@ final class KeyboardViewController: UIInputViewController {
         if shiftButton.isSelected { didTapShiftButton() }
 
         guard let title = sender.titleLabel?.text,
-        let keyCommand = HangulKeyCommand(rawValue: title) else { return }
-        let result = keyboard.input(keyCommand)
-        textDocumentProxy.replace(result.0, with: result.1)
+              let letter = HangulKeyCommand(rawValue: title) else { return }
+        let output = keyboard.input(.letter(letter))
+        textDocumentProxy.replace(output.beforeText, with: output.afterText)
     }
 
     @IBAction
@@ -51,8 +51,8 @@ final class KeyboardViewController: UIInputViewController {
 
         letterButtons.forEach { button in
             guard let title = button.titleLabel?.text,
-                  let keyCommand = HangulKeyCommand(rawValue: title) else { return }
-            button.setTitle(keyCommand.shifted.rawValue, for: .normal)
+                  let letter = HangulKeyCommand(rawValue: title) else { return }
+            button.setTitle(letter.shifted.rawValue, for: .normal)
         }
     }
 
@@ -61,25 +61,24 @@ final class KeyboardViewController: UIInputViewController {
         if shiftButton.isSelected { didTapShiftButton() }
 
         let output = keyboard.input(.nextLine)
-        textDocumentProxy.replace(output.0, with: output.1)
+        textDocumentProxy.replace(output.beforeText, with: output.afterText)
     }
 
     @IBAction
     private func didTapSpaceButton() {
         if shiftButton.isSelected { didTapShiftButton() }
 
-        let result = keyboard.input(.space)
-        textDocumentProxy.replace(result.0, with: result.1)
+        let output = keyboard.input(.space)
+        textDocumentProxy.replace(output.beforeText, with: output.afterText)
     }
 
     @IBAction func didTapBackButton() {
         if shiftButton.isSelected { didTapShiftButton() }
 
-        let result = keyboard.input(.back)
-        textDocumentProxy.replace(result.0, with: result.1)
-
+        let output = keyboard.input(.back)
+        textDocumentProxy.replace(output.beforeText, with: output.afterText)
     }
-    
+
 }
 
 // MARK: - UI
@@ -104,12 +103,20 @@ private extension KeyboardViewController {
 
     func configureButtons() {
         letterButtons.forEach { button in
-            button.backgroundColor = .tertiarySystemGroupedBackground
-            button.layer.shadowColor = UIColor(red: 0, green: 0, blue: 0, alpha: 0.15).cgColor
-            button.layer.shadowOpacity = 1
-            button.layer.shadowRadius = 6
-            button.layer.shadowOffset = CGSize(width: 0, height: 2)
+            button.backgroundColor = Design.backgroundColor
+            button.layer.shadowColor = Design.shadowColor
+            button.layer.shadowOpacity = Design.shadowOpacity
+            button.layer.shadowRadius = Design.shadowRadius
+            button.layer.shadowOffset = Design.shadownOffset
         }
+    }
+
+    enum Design {
+        static let backgroundColor: UIColor = .tertiarySystemGroupedBackground
+        static let shadowColor: CGColor = UIColor(red: 0, green: 0, blue: 0, alpha: 0.15).cgColor
+        static let shadowOpacity: Float = 1
+        static let shadowRadius: CGFloat = 6
+        static let shadownOffset: CGSize = .init(width: 0, height: 2)
     }
 
 }
