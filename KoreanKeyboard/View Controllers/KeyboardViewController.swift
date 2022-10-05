@@ -38,7 +38,8 @@ final class KeyboardViewController: UIInputViewController {
     private func didTapLetterButton(_ sender: UIButton) {
         if shiftButton.isSelected { didTapShiftButton() }
 
-        guard let keyCommand = sender.titleLabel?.text else { return }
+        guard let title = sender.titleLabel?.text,
+        let keyCommand = HangulKeyCommand(rawValue: title) else { return }
         let result = keyboard.input(keyCommand)
         textDocumentProxy.replace(result.0, with: result.1)
     }
@@ -59,7 +60,7 @@ final class KeyboardViewController: UIInputViewController {
     private func didTapEnterButton() {
         if shiftButton.isSelected { didTapShiftButton() }
 
-        let output = keyboard.input("\n")
+        let output = keyboard.input(.nextLine)
         textDocumentProxy.replace(output.0, with: output.1)
     }
 
@@ -67,10 +68,18 @@ final class KeyboardViewController: UIInputViewController {
     private func didTapSpaceButton() {
         if shiftButton.isSelected { didTapShiftButton() }
 
-        let result = keyboard.input(" ")
+        let result = keyboard.input(.space)
         textDocumentProxy.replace(result.0, with: result.1)
     }
 
+    @IBAction func didTapBackButton() {
+        if shiftButton.isSelected { didTapShiftButton() }
+
+        let result = keyboard.input(.back)
+        textDocumentProxy.replace(result.0, with: result.1)
+
+    }
+    
 }
 
 // MARK: - UI

@@ -41,9 +41,9 @@ enum HangulKeyCommand: String {
     case ㅠ
     case ㅜ
     case ㅡ
-    // FIXME: 리팩토링
-    case space
-    case nextLine
+    case space = " "
+    case nextLine = "\n"
+    case back
 
     var isVowel: Bool {
         rawValue.isVowel

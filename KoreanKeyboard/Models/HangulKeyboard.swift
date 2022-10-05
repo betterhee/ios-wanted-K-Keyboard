@@ -6,12 +6,13 @@
 //
 
 import Foundation
+import os
 
 class HangulKeyboard {
 
     // MARK: Type
 
-    private enum State {
+    private enum State: String {
         /// 버퍼가 비워진 상태
         case none
         /// 버퍼에 초성이 있는 상태
@@ -55,121 +56,157 @@ class HangulKeyboard {
     // MARK: Functions
 
     /// 입력 전 텍스트와 입력 후 텍스트를 반환합니다.
-    func input(_ input: String) -> (String, String) {
+    func input(_ input: HangulKeyCommand) -> (String, String) {
         let before = fullText
+        switch input {
+        case .space, .nextLine:
+            flush()
+            editedText.append(input.rawValue)
+            state = .none
+        case .back:
+            inputBack()
+        default:
+            inputLetter(input.rawValue)
+        }
+        let after = fullText
+        return (before, after)
+    }
 
-        if let keyCommand = HangulKeyCommand(rawValue: input)?.rawValue {
-            switch state {
-            case .none: // empty, none
-                if !keyCommand.isVowel {
-                    buffer.addComponent(keyCommand, for: .leadingConsonant)
-                    state = .leadingConsonant
-                } else {
-                    buffer.addComponent(keyCommand, for: .vowel)
-                    state = .singleVowel
-                }
-            case .leadingConsonant: // 자음, 모음, 받침1개 2개 - 초성
-                if !keyCommand.isVowel {
-                    flush()
-                    buffer.addComponent(keyCommand, for: .leadingConsonant)
-                    state = .leadingConsonant
-                } else {
-                    buffer.addComponent(keyCommand, for: .vowel)
-                    state = .leadingConsonantAndSingleVowel
-                }
-            case .leadingConsonantAndSingleVowel:
-                if !keyCommand.isVowel {
-                    buffer.addComponent(keyCommand, for: .trailingConsonant)
-                    state = .leadingConsonantAndVowelAndSingleTrailingConsonant
-                } else {
-                    // TODO
-                    if (buffer.vowel.firstCharacterAsString + keyCommand).isVowel {
-                        buffer.addComponent(keyCommand, for: .vowel)
-                        state = .leadingConsonantAndDoubleVowel
-                    } else {
-                        flush()
-                        buffer.addComponent(keyCommand, for: .vowel)
-                        state = .singleVowel
-                    }
-                }
-            case .leadingConsonantAndDoubleVowel:
-                if !keyCommand.isVowel {
-                    if keyCommand.isTrailingConsonant {
-                        buffer.addComponent(keyCommand, for: .trailingConsonant)
-
-                        state = .leadingConsonantAndVowelAndSingleTrailingConsonant
-                    } else {
-                        flush()
-                        buffer.addComponent(keyCommand, for: .leadingConsonant)
-                        state = .leadingConsonant
-                    }
+    private func inputLetter(_ letter: String) {
+        switch state {
+        case .none: // empty, none
+            if !letter.isVowel {
+                buffer.addComponent(letter, for: .leadingConsonant)
+                state = .leadingConsonant
+            } else {
+                buffer.addComponent(letter, for: .vowel)
+                state = .singleVowel
+            }
+        case .leadingConsonant: // 자음, 모음, 받침1개 2개 - 초성
+            if !letter.isVowel {
+                flush()
+                buffer.addComponent(letter, for: .leadingConsonant)
+                state = .leadingConsonant
+            } else {
+                buffer.addComponent(letter, for: .vowel)
+                state = .leadingConsonantAndSingleVowel
+            }
+        case .leadingConsonantAndSingleVowel:
+            if !letter.isVowel {
+                buffer.addComponent(letter, for: .trailingConsonant)
+                state = .leadingConsonantAndVowelAndSingleTrailingConsonant
+            } else {
+                if (buffer.vowel.firstCharacterAsString + letter).isVowel {
+                    buffer.addComponent(letter, for: .vowel)
+                    state = .leadingConsonantAndDoubleVowel
                 } else {
                     flush()
-                    buffer.addComponent(keyCommand, for: .vowel)
-                    state = .singleVowel
-                }
-            case .leadingConsonantAndVowelAndSingleTrailingConsonant:
-                if !keyCommand.isVowel {
-                    if (buffer.trailingConsonant.firstCharacterAsString + keyCommand).isTrailingConsonant {
-                        buffer.addComponent(keyCommand, for: .trailingConsonant)
-                        state = .leadingConsonantAndVowelAndDoubleTrailingConsonant
-                    } else {
-                        flush()
-                        buffer.addComponent(keyCommand, for: .leadingConsonant)
-                        state = .leadingConsonant
-                    }
-                } else {
-                    let jongseong = buffer.popLastComponent()
-                    flush()
-                    buffer.addComponent(jongseong!, for: .leadingConsonant)
-                    buffer.addComponent(keyCommand, for: .vowel)
-                    state = .leadingConsonantAndSingleVowel
-                }
-            case .leadingConsonantAndVowelAndDoubleTrailingConsonant:
-                if !keyCommand.isVowel {
-                    flush()
-                    buffer.addComponent(keyCommand, for: .leadingConsonant)
-                    state = .leadingConsonant
-                } else {
-                    let jongseong = buffer.popLastComponent()
-                    flush()
-                    buffer.addComponent(jongseong!, for: .leadingConsonant)
-                    buffer.addComponent(keyCommand, for: .vowel)
-                    state = .leadingConsonantAndSingleVowel
-                }
-            case .singleVowel:
-                if !keyCommand.isVowel {
-                    flush()
-                    buffer.addComponent(keyCommand, for: .leadingConsonant)
-                    state = .leadingConsonant
-                } else {
-                    // TODO: 에러처리
-                    if (buffer.vowel.firstCharacterAsString + keyCommand).isVowel {
-                        buffer.addComponent(keyCommand, for: .vowel)
-                        state = .doubleVowel
-                    } else {
-                        flush()
-                        buffer.addComponent(keyCommand, for: .vowel)
-                        state = .singleVowel
-                    }
-                }
-            case .doubleVowel:
-                if !keyCommand.isVowel {
-                    flush()
-                    buffer.addComponent(keyCommand, for: .leadingConsonant)
-                    state = .leadingConsonant
-                } else {
-                    flush()
-                    buffer.addComponent(keyCommand, for: .vowel)
+                    buffer.addComponent(letter, for: .vowel)
                     state = .singleVowel
                 }
             }
-        } else {
-            flush()
-            editedText.append(input)
-            state = .none
+        case .leadingConsonantAndDoubleVowel:
+            if !letter.isVowel {
+                if letter.isTrailingConsonant {
+                    buffer.addComponent(letter, for: .trailingConsonant)
+                    state = .leadingConsonantAndVowelAndSingleTrailingConsonant
+                } else {
+                    flush()
+                    buffer.addComponent(letter, for: .leadingConsonant)
+                    state = .leadingConsonant
+                }
+            } else {
+                flush()
+                buffer.addComponent(letter, for: .vowel)
+                state = .singleVowel
+            }
+        case .leadingConsonantAndVowelAndSingleTrailingConsonant:
+            if !letter.isVowel {
+                if (buffer.trailingConsonant.firstCharacterAsString + letter).isTrailingConsonant {
+                    buffer.addComponent(letter, for: .trailingConsonant)
+                    state = .leadingConsonantAndVowelAndDoubleTrailingConsonant
+                } else {
+                    flush()
+                    buffer.addComponent(letter, for: .leadingConsonant)
+                    state = .leadingConsonant
+                }
+            } else {
+                let lastTrailingConsonant = buffer.popLastComponent()
+                flush()
+                buffer.addComponent(lastTrailingConsonant!, for: .leadingConsonant)
+                buffer.addComponent(letter, for: .vowel)
+                state = .leadingConsonantAndSingleVowel
+            }
+        case .leadingConsonantAndVowelAndDoubleTrailingConsonant:
+            if !letter.isVowel {
+                flush()
+                buffer.addComponent(letter, for: .leadingConsonant)
+                state = .leadingConsonant
+            } else {
+                let lastTrailingConsonant = buffer.popLastComponent()
+                flush()
+                buffer.addComponent(lastTrailingConsonant!, for: .leadingConsonant)
+                buffer.addComponent(letter, for: .vowel)
+                state = .leadingConsonantAndSingleVowel
+            }
+        case .singleVowel:
+            if !letter.isVowel {
+                flush()
+                buffer.addComponent(letter, for: .leadingConsonant)
+                state = .leadingConsonant
+            } else {
+                if (buffer.vowel.firstCharacterAsString + letter).isVowel {
+                    buffer.addComponent(letter, for: .vowel)
+                    state = .doubleVowel
+                } else {
+                    flush()
+                    buffer.addComponent(letter, for: .vowel)
+                    state = .singleVowel
+                }
+            }
+        case .doubleVowel:
+            if !letter.isVowel {
+                flush()
+                buffer.addComponent(letter, for: .leadingConsonant)
+                state = .leadingConsonant
+            } else {
+                flush()
+                buffer.addComponent(letter, for: .vowel)
+                state = .singleVowel
+            }
         }
-        return (before, fullText)
+    }
+
+    private func inputBack() {
+        switch state {
+        case .none:
+            if !editedText.isEmpty {
+                editedText.removeLast()
+            }
+        case .leadingConsonant:
+            buffer.popLastComponent()
+            state = .none
+        case .leadingConsonantAndSingleVowel:
+            buffer.popLastComponent()
+            state = .leadingConsonant
+        case .leadingConsonantAndDoubleVowel:
+            buffer.popLastComponent()
+            state = .leadingConsonantAndSingleVowel
+        case .leadingConsonantAndVowelAndSingleTrailingConsonant:
+            buffer.popLastComponent()
+            state = buffer.vowel.count == 1 ?
+                .leadingConsonantAndSingleVowel :
+                .leadingConsonantAndDoubleVowel
+        case .leadingConsonantAndVowelAndDoubleTrailingConsonant:
+            buffer.popLastComponent()
+            state = .leadingConsonantAndVowelAndSingleTrailingConsonant
+        case .singleVowel:
+            buffer.popLastComponent()
+            state = .none
+        case .doubleVowel:
+            buffer.popLastComponent()
+            state = .singleVowel
+        }
     }
 
     /// 입력된 낱글자를 모아 입력 버퍼를 비운다.
