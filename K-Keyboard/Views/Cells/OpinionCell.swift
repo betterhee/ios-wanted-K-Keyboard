@@ -8,7 +8,8 @@
 import UIKit
 
 final class OpinionCell: UICollectionViewCell {
-    lazy var stackView: UIStackView = {
+
+    private let stackView: UIStackView = {
         let view = UIStackView()
         view.translatesAutoresizingMaskIntoConstraints = false
         view.axis = .vertical
@@ -17,48 +18,47 @@ final class OpinionCell: UICollectionViewCell {
         return view
     }()
     
-    lazy var imageLabel: UILabel = {
+    private let imageLabel: UILabel = {
         let label = UILabel()
-        label.translatesAutoresizingMaskIntoConstraints = false
         label.font = .preferredFont(forTextStyle: .largeTitle)
         label.adjustsFontForContentSizeCategory = true
         return label
     }()
     
-    lazy var keywordLabel: UILabel = {
+    private let keywordLabel: UILabel = {
         let label = UILabel()
-        label.translatesAutoresizingMaskIntoConstraints = false
         label.font = .preferredFont(forTextStyle: .body)
         label.adjustsFontForContentSizeCategory = true
         label.textColor = #colorLiteral(red: 0.6000000238, green: 0.6000000238, blue: 0.6000000238, alpha: 1)
         return label
     }()
     
-    lazy var countLabel: UILabel = {
+    private let countLabel: UILabel = {
         let label = UILabel()
-        label.translatesAutoresizingMaskIntoConstraints = false
         label.font = .preferredFont(forTextStyle: .caption1)
         label.adjustsFontForContentSizeCategory = true
         label.textColor = #colorLiteral(red: 0.6000000238, green: 0.6000000238, blue: 0.6000000238, alpha: 1)
         return label
     }()
-    
+
+    // MARK: Init
+
     override init(frame: CGRect) {
         super.init(frame: frame)
+
         configure()
     }
+
     required init?(coder: NSCoder) {
         fatalError("not implemnted")
     }
-}
 
-extension OpinionCell {
-    func configure() {
+    // MARK: Functions
+
+    private func configure() {
         contentView.addSubview(stackView)
-        stackView.addArrangedSubview(imageLabel)
-        stackView.addArrangedSubview(keywordLabel)
-        stackView.addArrangedSubview(countLabel)
-        
+        [imageLabel, keywordLabel, countLabel].forEach { stackView.addArrangedSubview($0) }
+
         NSLayoutConstraint.activate([
             stackView.topAnchor.constraint(equalTo: contentView.topAnchor),
             stackView.leadingAnchor.constraint(equalTo: contentView.leadingAnchor),
@@ -66,5 +66,11 @@ extension OpinionCell {
             stackView.bottomAnchor.constraint(equalTo: contentView.bottomAnchor)
         ])
     }
-}
 
+    func updateUI(with item: Opinion) {
+        imageLabel.text = item.emoji
+        keywordLabel.text = item.keyword
+        countLabel.text = String(item.count)
+    }
+
+}

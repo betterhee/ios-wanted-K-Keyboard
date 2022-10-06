@@ -10,16 +10,16 @@ import UIKit
 extension ThemeViewController {
     func createLayout() -> UICollectionViewCompositionalLayout {
         let layout = UICollectionViewCompositionalLayout { sectionIndex, layout in
-            
+
             let sectionHeader = SupplymentaryItem.sectionHeader.info
             let header = SupplymentaryItem.header.info
             let footer = SupplymentaryItem.footer.info
-    
+
             let spacing = CGFloat(16)
             let sectionSpacing = NSDirectionalEdgeInsets(top: spacing, leading: spacing, bottom: spacing, trailing: spacing)
             let wideSectionSpacint = NSDirectionalEdgeInsets(top: spacing, leading: 0, bottom: spacing, trailing: 0)
 
-            
+
             switch sectionIndex {
             case 0:
                 let item = NSCollectionLayoutItem(layoutSize: Section.event.itemSize)

@@ -8,28 +8,34 @@
 import UIKit
 
 final class BannerCell: UICollectionViewCell {
-    
-    lazy var bannerView: UIImageView = {
+
+    // MARK: Properties
+
+    private let bannerView: UIImageView = {
         let view = UIImageView()
         view.translatesAutoresizingMaskIntoConstraints = false
         return view 
     }()
+
+    // MARK: Init
     
     override init(frame: CGRect) {
         super.init(frame: frame)
+
         configure()
     }
+
     required init?(coder: NSCoder) {
         fatalError("not implemnted")
     }
-}
 
-extension BannerCell {
-    func configure() {
+    // MARK: Functions
+
+    private func configure() {
         // TODO: - 이미지 비율 맞게
-//        contentMode = .scaleAspectFill
+        //        contentMode = .scaleAspectFill
         contentView.addSubview(bannerView)
-        
+
         NSLayoutConstraint.activate([
             bannerView.topAnchor.constraint(equalTo: contentView.topAnchor),
             bannerView.leadingAnchor.constraint(equalTo: contentView.leadingAnchor),
@@ -37,5 +43,9 @@ extension BannerCell {
             bannerView.bottomAnchor.constraint(equalTo: contentView.bottomAnchor)
         ])
     }
-}
 
+    func updateUI(with item: Banner) {
+        bannerView.image = UIImage(named: item.imagePath)
+    }
+    
+}

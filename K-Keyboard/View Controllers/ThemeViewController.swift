@@ -56,7 +56,7 @@ final class ThemeViewController: UIViewController {
                 }
             })
         
-        dataSource.supplementaryViewProvider = { view, kind, index in
+        dataSource.supplementaryViewProvider = { _, kind, index in
             switch kind {
             case SectionHeaderView.elementKind:
                 return self.collectionView.dequeueConfiguredReusableSupplementary(using: sectionHeaderViewRegistration,
@@ -85,61 +85,60 @@ final class ThemeViewController: UIViewController {
 /// - CellRegistration
 extension ThemeViewController {
     private func eventCellRegistration() -> UICollectionView.CellRegistration<EventCell, Event> {
-        return UICollectionView.CellRegistration { (cell, indexPath, event) in
-            cell.contentLabel.text = event.content
+        return UICollectionView.CellRegistration { cell, _, item in
+            cell.updateUI(with: item)
         }
     }
     
     private func tagCellRegistration() -> UICollectionView.CellRegistration<TagCell, Tag> {
-        return UICollectionView.CellRegistration { (cell, indexPath, tag) in
-            cell.tagButton.setTitle(tag.keyword, for: .normal)
+        return UICollectionView.CellRegistration { cell, _, item in
+            cell.updateUI(with: item)
         }
     }
     
     private func reactionCellRegistration() -> UICollectionView.CellRegistration<ReactionCell, Reaction> {
-        return UICollectionView.CellRegistration { (cell, indexPath, reaction) in
-            cell.imageView.image = UIImage(named: reaction.imagePath)
-            cell.keywordLabel.text = reaction.keyword
+        return UICollectionView.CellRegistration { cell, _, item in
+            cell.updateUI(with: item)
         }
     }
     
     private func opinionCellRegistration() -> UICollectionView.CellRegistration<OpinionCell, Opinion> {
-        return UICollectionView.CellRegistration { (cell, indexPath, opinion) in
-            cell.imageLabel.text = opinion.emoji
-            cell.keywordLabel.text = opinion.keyword
-            cell.countLabel.text = String(opinion.count)
+        return UICollectionView.CellRegistration { cell, _, item in
+            cell.updateUI(with: item)
         }
     }
     
     private func bannerCellRegistration() -> UICollectionView.CellRegistration<BannerCell, Banner> {
-        return UICollectionView.CellRegistration { cell, indexPath, banner in
-            cell.bannerView.image = UIImage(named: banner.imagePath)
+        return UICollectionView.CellRegistration { cell, _, item in
+            cell.updateUI(with: item)
         }
     }
     
     private func reviewCellRegistration() -> UICollectionView.CellRegistration<ReviewCell, Review> {
-        return UICollectionView.CellRegistration { cell, indexPath, review in
-            cell.updateUI(review)
+        return UICollectionView.CellRegistration { cell, _, item in
+            cell.updateUI(with: item)
         }
     }
     
     private func sectionHeaderViewRegistration() -> UICollectionView.SupplementaryRegistration<SectionHeaderView> {
         return UICollectionView.SupplementaryRegistration<SectionHeaderView>(
             elementKind: SectionHeaderView.elementKind,
-            handler: { supplementaryView, elementKind, indexPath in
-                if let reviewSection = Section(rawValue: Section.review.rawValue) {
-                    if indexPath.section == reviewSection.rawValue {
-                        let snapshot = self.dataSource.snapshot()
-                        let numberOfReviews = snapshot.numberOfItems(inSection: .review)
-                        supplementaryView.updateUI(Section.review.title, numberOfReviews-1)
-                    }
+            handler: { supplementaryView, _, indexPath in
+                guard let section = Section(rawValue: indexPath.section) else { return }
+                if case .review = section {
+                    let snapshot = self.dataSource.snapshot()
+                    let numberOfReviews = snapshot.numberOfItems(inSection: section)
+                    supplementaryView.updateUI(section.title, numberOfReviews - 1)
+                } else {
+                    supplementaryView.updateUI(section.title, nil)
                 }
-                supplementaryView.updateUI(Section(rawValue: indexPath.section)?.title ?? "Please check review-title", nil)
             })
     }
     
     private func headerViewRegistration() -> UICollectionView.SupplementaryRegistration<HeaderView> {
-        return UICollectionView.SupplementaryRegistration(elementKind: HeaderView.elementKind) { supplementaryView, elementKind, indexPath in
+        return UICollectionView.SupplementaryRegistration(
+            elementKind: HeaderView.elementKind
+        ) { supplementaryView, _, _ in
             var owner = Owner(nickName: "크리에이터명", themeName: "앙무", themeNickName: "코핀", themeImagePath: "theme.png")
             owner.numberOfConsumer = 78
             supplementaryView.updateUI(owner: owner)
@@ -147,7 +146,7 @@ extension ThemeViewController {
     }
     
     private func footerViewRegistration() -> UICollectionView.SupplementaryRegistration<FooterView> {
-        return UICollectionView.SupplementaryRegistration(elementKind: FooterView.elementKind) { supplementaryView, elementKind, indexPath in
+        return UICollectionView.SupplementaryRegistration(elementKind: FooterView.elementKind) { supplementaryView, _, _ in
             // TODO: - update할꺼 아직 없음
             supplementaryView.updateUI()
         }

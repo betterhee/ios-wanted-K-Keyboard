@@ -8,33 +8,44 @@
 import UIKit
 
 final class TagCell: UICollectionViewCell {
-    lazy var tagButton: UIButton = {
+
+    enum Design {
+        static let font: UIFont = .preferredFont(forTextStyle: .body)
+        static let titleColor: UIColor = .label
+        static let backgroundColor: UIColor = .tertiarySystemGroupedBackground
+        static let cornerRadius: CGFloat = 18
+        static let contentEdgeInsets = UIEdgeInsets(top: 4, left: 10, bottom: 4, right: 10)
+    }
+
+    private let tagButton: UIButton = {
         let button = UIButton()
         button.translatesAutoresizingMaskIntoConstraints = false
-        button.isEnabled = true
-        button.titleLabel?.font = .preferredFont(forTextStyle: .title3)
         button.titleLabel?.adjustsFontForContentSizeCategory = true
-        button.titleLabel?.numberOfLines = 1
-        button.setTitleColor(.label, for: .normal)
-        button.backgroundColor = #colorLiteral(red: 0.8039215803, green: 0.8039215803, blue: 0.8039215803, alpha: 1)
-        button.contentEdgeInsets = UIEdgeInsets(top: 10, left: 10, bottom: 10, right: 10)
-        button.layer.cornerRadius = CGFloat(15)
+        button.titleLabel?.font = Design.font
+        button.setTitleColor(Design.titleColor, for: .normal)
+        button.backgroundColor = Design.backgroundColor
+        button.contentEdgeInsets = Design.contentEdgeInsets
+        button.layer.cornerRadius = Design.cornerRadius
         return button
     }()
+
+    // MARK: Init
     
     override init(frame: CGRect) {
         super.init(frame: frame)
+
         configure()
     }
+
     required init?(coder: NSCoder) {
         fatalError("not implemnted")
     }
-}
 
-extension TagCell {
+    // MARK: Functions
+
     func configure() {
         contentView.addSubview(tagButton)
-        
+
         NSLayoutConstraint.activate([
             tagButton.leadingAnchor.constraint(equalTo: contentView.leadingAnchor),
             tagButton.trailingAnchor.constraint(equalTo: contentView.trailingAnchor),
@@ -42,5 +53,9 @@ extension TagCell {
             tagButton.bottomAnchor.constraint(equalTo: contentView.bottomAnchor)
         ])
     }
-}
 
+    func updateUI(with item: Tag) {
+        tagButton.setTitle(item.keyword, for: .normal)
+    }
+
+}
