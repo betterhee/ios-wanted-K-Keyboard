@@ -14,6 +14,10 @@ final class KeyboardViewController: UIInputViewController {
 
     @IBOutlet private var letterButtons: [UIButton]!
     @IBOutlet private var shiftButton: UIButton!
+    @IBOutlet private var enterButton: UIButton!
+    @IBOutlet private var spaceButton: UIButton!
+    @IBOutlet private var backButton: UIButton!
+    @IBOutlet private var numberButton: UIButton!
 
     private var keyboardView: UIView!
     private var keyboard: Keyboard!
@@ -25,6 +29,7 @@ final class KeyboardViewController: UIInputViewController {
 
         configureKeyboard()
         configureKeyboardView()
+        configureButtons()
     }
 
     private func configureKeyboard() {
@@ -46,7 +51,6 @@ final class KeyboardViewController: UIInputViewController {
 
     @IBAction
     private func didTapShiftButton() {
-        Logger.keyboard.debug(#function)
         shiftButton.isSelected.toggle()
 
         letterButtons.forEach { button in
@@ -85,6 +89,14 @@ final class KeyboardViewController: UIInputViewController {
 
 private extension KeyboardViewController {
 
+    enum Design {
+        static let cornerRadius: CGFloat = 5
+        static let shadowColor: CGColor = UIColor(red: 0, green: 0, blue: 0, alpha: 0.15).cgColor
+        static let shadowOpacity: Float = 1
+        static let shadowRadius: CGFloat = 0
+        static let shadownOffset: CGSize = .init(width: 0, height: 2)
+    }
+
     func configureKeyboardView() {
         let bundle = Bundle(for: type(of: self))
         let nib = UINib(nibName: "KeyboardView", bundle: bundle)
@@ -98,25 +110,18 @@ private extension KeyboardViewController {
             keyboardView.bottomAnchor.constraint(equalTo: view.bottomAnchor),
         ])
         keyboardView.backgroundColor = view.backgroundColor
-        configureButtons()
     }
 
     func configureButtons() {
-        letterButtons.forEach { button in
-            button.backgroundColor = Design.backgroundColor
-            button.layer.shadowColor = Design.shadowColor
-            button.layer.shadowOpacity = Design.shadowOpacity
-            button.layer.shadowRadius = Design.shadowRadius
-            button.layer.shadowOffset = Design.shadownOffset
-        }
-    }
-
-    enum Design {
-        static let backgroundColor: UIColor = .tertiarySystemGroupedBackground
-        static let shadowColor: CGColor = UIColor(red: 0, green: 0, blue: 0, alpha: 0.15).cgColor
-        static let shadowOpacity: Float = 1
-        static let shadowRadius: CGFloat = 6
-        static let shadownOffset: CGSize = .init(width: 0, height: 2)
+        [letterButtons, [shiftButton, enterButton, spaceButton, backButton, numberButton]]
+            .flatMap { $0 }
+            .forEach { button in
+                button.layer.cornerRadius = Design.cornerRadius
+                button.layer.shadowColor = Design.shadowColor
+                button.layer.shadowOpacity = Design.shadowOpacity
+                button.layer.shadowRadius = Design.shadowRadius
+                button.layer.shadowOffset = Design.shadownOffset
+            }
     }
 
 }

@@ -11,7 +11,11 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="KeyboardViewController" customModule="KoreanKeyboard" customModuleProvider="target">
             <connections>
-                <outlet property="shiftButton" destination="Pq5-bU-GLj" id="PQd-80-Nv4"/>
+                <outlet property="backButton" destination="m0O-oD-MeF" id="Q5L-N0-whM"/>
+                <outlet property="enterButton" destination="OYI-X9-HDY" id="1qG-ZT-6tV"/>
+                <outlet property="numberButton" destination="nkc-hm-nqg" id="YVr-1G-MN9"/>
+                <outlet property="shiftButton" destination="Pq5-bU-GLj" id="p5v-Ss-AvD"/>
+                <outlet property="spaceButton" destination="ueI-db-6NJ" id="lZn-YP-gzn"/>
                 <outletCollection property="letterButtons" destination="HNi-Sd-odz" collectionClass="NSMutableArray" id="i0f-N8-2L1"/>
                 <outletCollection property="letterButtons" destination="kyq-WB-UIN" collectionClass="NSMutableArray" id="CmJ-NZ-rM7"/>
                 <outletCollection property="letterButtons" destination="504-FB-eEp" collectionClass="NSMutableArray" id="DhI-1w-v3u"/>
@@ -42,189 +46,248 @@
         </placeholder>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
         <view contentMode="scaleToFill" id="iN0-l3-epB">
-            <rect key="frame" x="0.0" y="0.0" width="390" height="160"/>
+            <rect key="frame" x="0.0" y="0.0" width="390" height="293"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
-                <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" spacing="2" translatesAutoresizingMaskIntoConstraints="NO" id="ePP-3C-VKD">
-                    <rect key="frame" x="0.0" y="0.0" width="390" height="160"/>
+                <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="ePP-3C-VKD">
+                    <rect key="frame" x="3" y="8" width="384" height="277"/>
                     <subviews>
-                        <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="1" translatesAutoresizingMaskIntoConstraints="NO" id="6Vh-G8-0a5">
-                            <rect key="frame" x="0.0" y="0.0" width="390" height="38.666666666666664"/>
+                        <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="6" translatesAutoresizingMaskIntoConstraints="NO" id="6Vh-G8-0a5">
+                            <rect key="frame" x="0.0" y="0.0" width="384" height="61.666666666666664"/>
                             <subviews>
                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="HNi-Sd-odz">
-                                    <rect key="frame" x="0.0" y="0.0" width="38" height="38.666666666666664"/>
-                                    <state key="normal" title="Button"/>
-                                    <buttonConfiguration key="configuration" style="plain" title="ㅂ"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="33" height="61.666666666666664"/>
+                                    <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                    <fontDescription key="fontDescription" style="UICTFontTextStyleBody"/>
+                                    <color key="tintColor" systemColor="labelColor"/>
+                                    <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                                    <state key="normal" title="ㅂ"/>
                                     <connections>
                                         <action selector="didTapLetterButton:" destination="-1" eventType="touchUpInside" id="o4N-q6-QnK"/>
                                     </connections>
                                 </button>
                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="kyq-WB-UIN">
-                                    <rect key="frame" x="39" y="0.0" width="38.333333333333343" height="38.666666666666664"/>
-                                    <state key="normal" title="Button"/>
-                                    <buttonConfiguration key="configuration" style="plain" title="ㅈ"/>
+                                    <rect key="frame" x="39" y="0.0" width="33" height="61.666666666666664"/>
+                                    <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                    <fontDescription key="fontDescription" style="UICTFontTextStyleBody"/>
+                                    <color key="tintColor" systemColor="labelColor"/>
+                                    <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                                    <state key="normal" title="ㅈ"/>
                                     <connections>
                                         <action selector="didTapLetterButton:" destination="-1" eventType="touchUpInside" id="jjU-Hr-bs1"/>
                                     </connections>
                                 </button>
                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="504-FB-eEp">
-                                    <rect key="frame" x="78.333333333333329" y="0.0" width="38" height="38.666666666666664"/>
-                                    <state key="normal" title="Button"/>
-                                    <buttonConfiguration key="configuration" style="plain" title="ㄷ"/>
+                                    <rect key="frame" x="78" y="0.0" width="33" height="61.666666666666664"/>
+                                    <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                    <fontDescription key="fontDescription" style="UICTFontTextStyleBody"/>
+                                    <color key="tintColor" systemColor="labelColor"/>
+                                    <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                                    <state key="normal" title="ㄷ"/>
                                     <connections>
                                         <action selector="didTapLetterButton:" destination="-1" eventType="touchUpInside" id="6UN-5j-kXy"/>
                                     </connections>
                                 </button>
                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="glp-Cd-zNe">
-                                    <rect key="frame" x="117.33333333333331" y="0.0" width="38" height="38.666666666666664"/>
-                                    <state key="normal" title="Button"/>
-                                    <buttonConfiguration key="configuration" style="plain" title="ㄱ"/>
+                                    <rect key="frame" x="117" y="0.0" width="33" height="61.666666666666664"/>
+                                    <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                    <fontDescription key="fontDescription" style="UICTFontTextStyleBody"/>
+                                    <color key="tintColor" systemColor="labelColor"/>
+                                    <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                                    <state key="normal" title="ㄱ"/>
                                     <connections>
                                         <action selector="didTapLetterButton:" destination="-1" eventType="touchUpInside" id="Ymf-hR-tU3"/>
                                     </connections>
                                 </button>
                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="YS3-ry-T5O">
-                                    <rect key="frame" x="156.33333333333334" y="0.0" width="38.333333333333343" height="38.666666666666664"/>
-                                    <state key="normal" title="Button"/>
-                                    <buttonConfiguration key="configuration" style="plain" title="ㅅ"/>
+                                    <rect key="frame" x="156" y="0.0" width="33" height="61.666666666666664"/>
+                                    <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                    <fontDescription key="fontDescription" style="UICTFontTextStyleBody"/>
+                                    <color key="tintColor" systemColor="labelColor"/>
+                                    <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                                    <state key="normal" title="ㅅ"/>
                                     <connections>
                                         <action selector="didTapLetterButton:" destination="-1" eventType="touchUpInside" id="m7e-wH-cit"/>
                                     </connections>
                                 </button>
                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="2sL-nJ-pZa">
-                                    <rect key="frame" x="195.66666666666666" y="0.0" width="38" height="38.666666666666664"/>
-                                    <state key="normal" title="Button"/>
-                                    <buttonConfiguration key="configuration" style="plain" title="ㅛ"/>
+                                    <rect key="frame" x="195" y="0.0" width="33" height="61.666666666666664"/>
+                                    <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                    <fontDescription key="fontDescription" style="UICTFontTextStyleBody"/>
+                                    <color key="tintColor" systemColor="labelColor"/>
+                                    <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                                    <state key="normal" title="ㅛ"/>
                                     <connections>
                                         <action selector="didTapLetterButton:" destination="-1" eventType="touchUpInside" id="O8b-5I-nIT"/>
                                     </connections>
                                 </button>
                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Jtc-AN-uck">
-                                    <rect key="frame" x="234.66666666666666" y="0.0" width="37.999999999999972" height="38.666666666666664"/>
-                                    <state key="normal" title="Button"/>
-                                    <buttonConfiguration key="configuration" style="plain" title="ㅕ"/>
+                                    <rect key="frame" x="234" y="0.0" width="33" height="61.666666666666664"/>
+                                    <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                    <fontDescription key="fontDescription" style="UICTFontTextStyleBody"/>
+                                    <color key="tintColor" systemColor="labelColor"/>
+                                    <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                                    <state key="normal" title="ㅕ"/>
                                     <connections>
                                         <action selector="didTapLetterButton:" destination="-1" eventType="touchUpInside" id="b10-lo-phH"/>
                                     </connections>
                                 </button>
                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="uFm-OB-q6n" userLabel="ㅑ">
-                                    <rect key="frame" x="273.66666666666669" y="0.0" width="38" height="38.666666666666664"/>
-                                    <state key="normal" title="Button"/>
-                                    <buttonConfiguration key="configuration" style="plain" title="ㅑ"/>
+                                    <rect key="frame" x="273" y="0.0" width="33" height="61.666666666666664"/>
+                                    <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                    <fontDescription key="fontDescription" style="UICTFontTextStyleBody"/>
+                                    <color key="tintColor" systemColor="labelColor"/>
+                                    <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                                    <state key="normal" title="ㅑ"/>
                                     <connections>
                                         <action selector="didTapLetterButton:" destination="-1" eventType="touchUpInside" id="18B-d7-7Gs"/>
                                     </connections>
                                 </button>
                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="k6i-0B-Edc">
-                                    <rect key="frame" x="312.66666666666669" y="0.0" width="38.333333333333314" height="38.666666666666664"/>
-                                    <state key="normal" title="Button"/>
-                                    <buttonConfiguration key="configuration" style="plain" title="ㅐ"/>
+                                    <rect key="frame" x="312" y="0.0" width="33" height="61.666666666666664"/>
+                                    <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                    <fontDescription key="fontDescription" style="UICTFontTextStyleBody"/>
+                                    <color key="tintColor" systemColor="labelColor"/>
+                                    <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                                    <state key="normal" title="ㅐ"/>
                                     <connections>
                                         <action selector="didTapLetterButton:" destination="-1" eventType="touchUpInside" id="4gh-Ef-oEF"/>
                                     </connections>
                                 </button>
                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="fxH-Ar-ACx">
-                                    <rect key="frame" x="352" y="0.0" width="38" height="38.666666666666664"/>
-                                    <state key="normal" title="Button"/>
-                                    <buttonConfiguration key="configuration" style="plain" title="ㅔ"/>
+                                    <rect key="frame" x="351" y="0.0" width="33" height="61.666666666666664"/>
+                                    <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                    <fontDescription key="fontDescription" style="UICTFontTextStyleBody"/>
+                                    <color key="tintColor" systemColor="labelColor"/>
+                                    <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                                    <state key="normal" title="ㅔ"/>
                                     <connections>
                                         <action selector="didTapLetterButton:" destination="-1" eventType="touchUpInside" id="gBS-Vm-9sV"/>
                                     </connections>
                                 </button>
                             </subviews>
                         </stackView>
-                        <stackView opaque="NO" contentMode="scaleToFill" spacing="2" translatesAutoresizingMaskIntoConstraints="NO" id="E1a-JZ-5Md">
-                            <rect key="frame" x="0.0" y="40.666666666666657" width="390" height="38.333333333333343"/>
+                        <stackView opaque="NO" contentMode="scaleToFill" spacing="6" translatesAutoresizingMaskIntoConstraints="NO" id="E1a-JZ-5Md">
+                            <rect key="frame" x="0.0" y="71.666666666666671" width="384" height="62.000000000000014"/>
                             <subviews>
                                 <view contentMode="scaleToFill" horizontalHuggingPriority="251" horizontalCompressionResistancePriority="749" translatesAutoresizingMaskIntoConstraints="NO" id="vqw-81-tQB">
-                                    <rect key="frame" x="0.0" y="0.0" width="13.666666666666666" height="38.333333333333336"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="13.666666666666666" height="62"/>
                                 </view>
                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="zkC-Zi-bYz">
-                                    <rect key="frame" x="15.666666666666664" y="0.0" width="38" height="38.333333333333336"/>
-                                    <state key="normal" title="Button"/>
-                                    <buttonConfiguration key="configuration" style="plain" title="ㅁ"/>
+                                    <rect key="frame" x="19.666666666666671" y="0.0" width="33" height="62"/>
+                                    <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                    <fontDescription key="fontDescription" style="UICTFontTextStyleBody"/>
+                                    <color key="tintColor" systemColor="labelColor"/>
+                                    <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                                    <state key="normal" title="ㅁ"/>
                                     <connections>
                                         <action selector="didTapLetterButton:" destination="-1" eventType="touchUpInside" id="nwo-4X-xpP"/>
                                     </connections>
                                 </button>
                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="uFx-7H-PBY">
-                                    <rect key="frame" x="55.666666666666657" y="0.0" width="38" height="38.333333333333336"/>
-                                    <state key="normal" title="Button"/>
-                                    <buttonConfiguration key="configuration" style="plain" title="ㄴ"/>
+                                    <rect key="frame" x="58.666666666666657" y="0.0" width="33" height="62"/>
+                                    <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                    <fontDescription key="fontDescription" style="UICTFontTextStyleBody"/>
+                                    <color key="tintColor" systemColor="labelColor"/>
+                                    <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                                    <state key="normal" title="ㄴ"/>
                                     <connections>
                                         <action selector="didTapLetterButton:" destination="-1" eventType="touchUpInside" id="jnr-gO-51U"/>
                                     </connections>
                                 </button>
                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="FeH-MK-MGr">
-                                    <rect key="frame" x="95.666666666666671" y="0.0" width="38.333333333333329" height="38.333333333333336"/>
-                                    <state key="normal" title="Button"/>
-                                    <buttonConfiguration key="configuration" style="plain" title="ㅇ"/>
+                                    <rect key="frame" x="97.666666666666671" y="0.0" width="33.000000000000014" height="62"/>
+                                    <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                    <fontDescription key="fontDescription" style="UICTFontTextStyleBody"/>
+                                    <color key="tintColor" systemColor="labelColor"/>
+                                    <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                                    <state key="normal" title="ㅇ"/>
                                     <connections>
                                         <action selector="didTapLetterButton:" destination="-1" eventType="touchUpInside" id="bca-wM-awY"/>
                                     </connections>
                                 </button>
                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="HTe-T9-s4Z">
-                                    <rect key="frame" x="136" y="0.0" width="38" height="38.333333333333336"/>
-                                    <state key="normal" title="Button"/>
-                                    <buttonConfiguration key="configuration" style="plain" title="ㄹ"/>
+                                    <rect key="frame" x="136.66666666666666" y="0.0" width="33" height="62"/>
+                                    <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                    <fontDescription key="fontDescription" style="UICTFontTextStyleBody"/>
+                                    <color key="tintColor" systemColor="labelColor"/>
+                                    <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                                    <state key="normal" title="ㄹ"/>
                                     <connections>
                                         <action selector="didTapLetterButton:" destination="-1" eventType="touchUpInside" id="MtH-Ms-8jT"/>
                                     </connections>
                                 </button>
                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="yvl-U8-E4B">
-                                    <rect key="frame" x="176" y="0.0" width="38" height="38.333333333333336"/>
-                                    <state key="normal" title="Button"/>
-                                    <buttonConfiguration key="configuration" style="plain" title="ㅎ"/>
+                                    <rect key="frame" x="175.66666666666666" y="0.0" width="33" height="62"/>
+                                    <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                    <fontDescription key="fontDescription" style="UICTFontTextStyleBody"/>
+                                    <color key="tintColor" systemColor="labelColor"/>
+                                    <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                                    <state key="normal" title="ㅎ"/>
                                     <connections>
                                         <action selector="didTapLetterButton:" destination="-1" eventType="touchUpInside" id="01k-rw-hhG"/>
                                     </connections>
                                 </button>
                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="JEk-qg-Mep">
-                                    <rect key="frame" x="216" y="0.0" width="38" height="38.333333333333336"/>
-                                    <state key="normal" title="Button"/>
-                                    <buttonConfiguration key="configuration" style="plain" title="ㅗ"/>
+                                    <rect key="frame" x="214.66666666666666" y="0.0" width="33" height="62"/>
+                                    <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                    <fontDescription key="fontDescription" style="UICTFontTextStyleBody"/>
+                                    <color key="tintColor" systemColor="labelColor"/>
+                                    <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                                    <state key="normal" title="ㅗ"/>
                                     <connections>
                                         <action selector="didTapLetterButton:" destination="-1" eventType="touchUpInside" id="CZz-Fb-ADN"/>
                                     </connections>
                                 </button>
                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="CZs-oo-efM">
-                                    <rect key="frame" x="256" y="0.0" width="38.333333333333314" height="38.333333333333336"/>
-                                    <state key="normal" title="Button"/>
-                                    <buttonConfiguration key="configuration" style="plain" title="ㅓ"/>
+                                    <rect key="frame" x="253.66666666666669" y="0.0" width="33" height="62"/>
+                                    <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                    <fontDescription key="fontDescription" style="UICTFontTextStyleBody"/>
+                                    <color key="tintColor" systemColor="labelColor"/>
+                                    <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                                    <state key="normal" title="ㅓ"/>
                                     <connections>
                                         <action selector="didTapLetterButton:" destination="-1" eventType="touchUpInside" id="Esh-UU-iEs"/>
                                     </connections>
                                 </button>
                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Gdb-l2-NYm">
-                                    <rect key="frame" x="296.33333333333331" y="0.0" width="38" height="38.333333333333336"/>
-                                    <state key="normal" title="Button"/>
-                                    <buttonConfiguration key="configuration" style="plain" title="ㅏ"/>
+                                    <rect key="frame" x="292.66666666666669" y="0.0" width="33" height="62"/>
+                                    <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                    <fontDescription key="fontDescription" style="UICTFontTextStyleBody"/>
+                                    <color key="tintColor" systemColor="labelColor"/>
+                                    <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                                    <state key="normal" title="ㅏ"/>
                                     <connections>
                                         <action selector="didTapLetterButton:" destination="-1" eventType="touchUpInside" id="5iK-Oi-kbg"/>
                                     </connections>
                                 </button>
                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="kta-Ie-7ju">
-                                    <rect key="frame" x="336.33333333333331" y="0.0" width="38" height="38.333333333333336"/>
-                                    <state key="normal" title="Button"/>
-                                    <buttonConfiguration key="configuration" style="plain" title="ㅣ"/>
+                                    <rect key="frame" x="331.66666666666669" y="0.0" width="33" height="62"/>
+                                    <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                    <fontDescription key="fontDescription" style="UICTFontTextStyleBody"/>
+                                    <color key="tintColor" systemColor="labelColor"/>
+                                    <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                                    <state key="normal" title="ㅣ"/>
                                     <connections>
                                         <action selector="didTapLetterButton:" destination="-1" eventType="touchUpInside" id="XlO-6Q-2bv"/>
                                     </connections>
                                 </button>
                                 <view contentMode="scaleToFill" horizontalHuggingPriority="251" horizontalCompressionResistancePriority="749" translatesAutoresizingMaskIntoConstraints="NO" id="RUK-eZ-iAC">
-                                    <rect key="frame" x="376.33333333333331" y="0.0" width="13.666666666666686" height="38.333333333333336"/>
+                                    <rect key="frame" x="370.66666666666669" y="0.0" width="13.333333333333314" height="62"/>
                                 </view>
                             </subviews>
                             <constraints>
                                 <constraint firstItem="RUK-eZ-iAC" firstAttribute="width" secondItem="vqw-81-tQB" secondAttribute="width" id="fLj-gK-8LN"/>
                             </constraints>
                         </stackView>
-                        <stackView opaque="NO" contentMode="scaleToFill" distribution="fillProportionally" spacing="2" baselineRelativeArrangement="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Oiw-rY-8GJ">
-                            <rect key="frame" x="0.0" y="81" width="390" height="38.666666666666657"/>
+                        <stackView opaque="NO" contentMode="scaleToFill" distribution="fillProportionally" spacing="6" baselineRelativeArrangement="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Oiw-rY-8GJ">
+                            <rect key="frame" x="0.0" y="143.66666666666666" width="384" height="61.666666666666657"/>
                             <subviews>
                                 <button opaque="NO" contentMode="scaleToFill" horizontalCompressionResistancePriority="751" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Pq5-bU-GLj" userLabel="Shift">
-                                    <rect key="frame" x="0.0" y="0.0" width="40.666666666666664" height="38.666666666666664"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="42" height="61.666666666666664"/>
+                                    <color key="backgroundColor" systemColor="systemFillColor"/>
                                     <accessibility key="accessibilityConfiguration" label="Shift"/>
+                                    <color key="tintColor" systemColor="labelColor"/>
                                     <state key="normal" title="Button"/>
                                     <buttonConfiguration key="configuration" style="plain" image="shift" catalog="system" title=""/>
                                     <connections>
@@ -232,70 +295,93 @@
                                     </connections>
                                 </button>
                                 <view contentMode="scaleToFill" horizontalHuggingPriority="251" horizontalCompressionResistancePriority="749" translatesAutoresizingMaskIntoConstraints="NO" id="jEH-A0-BbM">
-                                    <rect key="frame" x="42.666666666666664" y="0.0" width="11" height="38.666666666666664"/>
+                                    <rect key="frame" x="48" y="0.0" width="4.6666666666666643" height="61.666666666666664"/>
                                 </view>
                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ezD-rL-Axr">
-                                    <rect key="frame" x="55.666666666666657" y="0.0" width="38" height="38.666666666666664"/>
-                                    <state key="normal" title="Button"/>
-                                    <buttonConfiguration key="configuration" style="plain" title="ㅋ"/>
+                                    <rect key="frame" x="58.666666666666657" y="0.0" width="33" height="61.666666666666664"/>
+                                    <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                    <fontDescription key="fontDescription" style="UICTFontTextStyleBody"/>
+                                    <color key="tintColor" systemColor="labelColor"/>
+                                    <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                                    <state key="normal" title="ㅋ"/>
                                     <connections>
                                         <action selector="didTapLetterButton:" destination="-1" eventType="touchUpInside" id="RcK-1Y-bpQ"/>
                                     </connections>
                                 </button>
                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Lqe-sv-erP">
-                                    <rect key="frame" x="95.666666666666671" y="0.0" width="38.333333333333329" height="38.666666666666664"/>
-                                    <state key="normal" title="Button"/>
-                                    <buttonConfiguration key="configuration" style="plain" title="ㅌ"/>
+                                    <rect key="frame" x="97.666666666666671" y="0.0" width="33.000000000000014" height="61.666666666666664"/>
+                                    <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                    <fontDescription key="fontDescription" style="UICTFontTextStyleBody"/>
+                                    <color key="tintColor" systemColor="labelColor"/>
+                                    <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                                    <state key="normal" title="ㅌ"/>
                                     <connections>
                                         <action selector="didTapLetterButton:" destination="-1" eventType="touchUpInside" id="8x9-yg-vXf"/>
                                     </connections>
                                 </button>
                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="td4-wv-7qm">
-                                    <rect key="frame" x="136" y="0.0" width="38" height="38.666666666666664"/>
-                                    <state key="normal" title="Button"/>
-                                    <buttonConfiguration key="configuration" style="plain" title="ㅊ"/>
+                                    <rect key="frame" x="136.66666666666666" y="0.0" width="33" height="61.666666666666664"/>
+                                    <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                    <fontDescription key="fontDescription" style="UICTFontTextStyleBody"/>
+                                    <color key="tintColor" systemColor="labelColor"/>
+                                    <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                                    <state key="normal" title="ㅊ"/>
                                     <connections>
                                         <action selector="didTapLetterButton:" destination="-1" eventType="touchUpInside" id="al3-aX-2CZ"/>
                                     </connections>
                                 </button>
                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="f43-9f-3BN">
-                                    <rect key="frame" x="176" y="0.0" width="38" height="38.666666666666664"/>
-                                    <state key="normal" title="Button"/>
-                                    <buttonConfiguration key="configuration" style="plain" title="ㅍ"/>
+                                    <rect key="frame" x="175.66666666666666" y="0.0" width="33" height="61.666666666666664"/>
+                                    <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                    <fontDescription key="fontDescription" style="UICTFontTextStyleBody"/>
+                                    <color key="tintColor" systemColor="labelColor"/>
+                                    <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                                    <state key="normal" title="ㅍ"/>
                                     <connections>
                                         <action selector="didTapLetterButton:" destination="-1" eventType="touchUpInside" id="LTl-44-RLt"/>
                                     </connections>
                                 </button>
                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ng7-rW-bvV">
-                                    <rect key="frame" x="216" y="0.0" width="38" height="38.666666666666664"/>
-                                    <state key="normal" title="Button"/>
-                                    <buttonConfiguration key="configuration" style="plain" title="ㅠ"/>
+                                    <rect key="frame" x="214.66666666666666" y="0.0" width="33" height="61.666666666666664"/>
+                                    <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                    <fontDescription key="fontDescription" style="UICTFontTextStyleBody"/>
+                                    <color key="tintColor" systemColor="labelColor"/>
+                                    <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                                    <state key="normal" title="ㅠ"/>
                                     <connections>
                                         <action selector="didTapLetterButton:" destination="-1" eventType="touchUpInside" id="Mfb-kC-BMN"/>
                                     </connections>
                                 </button>
                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="11K-Wy-UNe">
-                                    <rect key="frame" x="256" y="0.0" width="38.333333333333314" height="38.666666666666664"/>
-                                    <state key="normal" title="Button"/>
-                                    <buttonConfiguration key="configuration" style="plain" title="ㅜ"/>
+                                    <rect key="frame" x="253.66666666666669" y="0.0" width="33" height="61.666666666666664"/>
+                                    <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                    <fontDescription key="fontDescription" style="UICTFontTextStyleBody"/>
+                                    <color key="tintColor" systemColor="labelColor"/>
+                                    <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                                    <state key="normal" title="ㅜ"/>
                                     <connections>
                                         <action selector="didTapLetterButton:" destination="-1" eventType="touchUpInside" id="dsU-X6-Wtm"/>
                                     </connections>
                                 </button>
                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="w9y-7N-cHn">
-                                    <rect key="frame" x="296.33333333333331" y="0.0" width="38" height="38.666666666666664"/>
-                                    <state key="normal" title="Button"/>
-                                    <buttonConfiguration key="configuration" style="plain" title="ㅡ"/>
+                                    <rect key="frame" x="292.66666666666669" y="0.0" width="33" height="61.666666666666664"/>
+                                    <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                    <fontDescription key="fontDescription" style="UICTFontTextStyleBody"/>
+                                    <color key="tintColor" systemColor="labelColor"/>
+                                    <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                                    <state key="normal" title="ㅡ"/>
                                     <connections>
                                         <action selector="didTapLetterButton:" destination="-1" eventType="touchUpInside" id="NVe-Ie-uiP"/>
                                     </connections>
                                 </button>
                                 <view contentMode="scaleToFill" horizontalHuggingPriority="251" horizontalCompressionResistancePriority="749" translatesAutoresizingMaskIntoConstraints="NO" id="hau-ki-dAD">
-                                    <rect key="frame" x="336.33333333333331" y="0.0" width="11" height="38.666666666666664"/>
+                                    <rect key="frame" x="331.66666666666669" y="0.0" width="4.3333333333333144" height="61.666666666666664"/>
                                 </view>
                                 <button opaque="NO" contentMode="scaleToFill" horizontalCompressionResistancePriority="751" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="m0O-oD-MeF" userLabel="Back">
-                                    <rect key="frame" x="349.33333333333331" y="0.0" width="40.666666666666686" height="38.666666666666664"/>
+                                    <rect key="frame" x="342" y="0.0" width="42" height="61.666666666666664"/>
+                                    <color key="backgroundColor" systemColor="systemFillColor"/>
                                     <accessibility key="accessibilityConfiguration" label="Back"/>
+                                    <color key="tintColor" systemColor="labelColor"/>
                                     <state key="normal" title="Button"/>
                                     <buttonConfiguration key="configuration" style="plain" image="delete.left" catalog="system" title=""/>
                                     <connections>
@@ -308,27 +394,36 @@
                                 <constraint firstItem="Pq5-bU-GLj" firstAttribute="width" secondItem="m0O-oD-MeF" secondAttribute="width" id="ezB-YE-uQL"/>
                             </constraints>
                         </stackView>
-                        <stackView opaque="NO" contentMode="scaleToFill" distribution="fillProportionally" spacing="2" translatesAutoresizingMaskIntoConstraints="NO" id="TRk-k4-NF7">
-                            <rect key="frame" x="0.0" y="121.66666666666667" width="390" height="38.333333333333329"/>
+                        <stackView opaque="NO" contentMode="scaleToFill" distribution="fillProportionally" spacing="6" translatesAutoresizingMaskIntoConstraints="NO" id="TRk-k4-NF7">
+                            <rect key="frame" x="0.0" y="215.33333333333334" width="384" height="61.666666666666657"/>
                             <subviews>
                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="nkc-hm-nqg">
-                                    <rect key="frame" x="0.0" y="0.0" width="114" height="38.333333333333336"/>
-                                    <state key="normal" title="Button"/>
-                                    <buttonConfiguration key="configuration" style="plain" title="123"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="99.666666666666671" height="61.666666666666664"/>
+                                    <color key="backgroundColor" systemColor="systemFillColor"/>
+                                    <fontDescription key="fontDescription" style="UICTFontTextStyleBody"/>
+                                    <color key="tintColor" systemColor="labelColor"/>
+                                    <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                                    <state key="normal" title="123"/>
                                 </button>
                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ueI-db-6NJ">
-                                    <rect key="frame" x="115.99999999999999" y="0.0" width="152.66666666666663" height="38.333333333333336"/>
-                                    <state key="normal" title="Button"/>
-                                    <buttonConfiguration key="configuration" style="plain" title="Space"/>
+                                    <rect key="frame" x="105.66666666666669" y="0.0" width="168" height="61.666666666666664"/>
+                                    <color key="backgroundColor" systemColor="systemFillColor"/>
+                                    <fontDescription key="fontDescription" style="UICTFontTextStyleBody"/>
+                                    <color key="tintColor" systemColor="labelColor"/>
+                                    <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                                    <state key="normal" title="Space"/>
                                     <connections>
                                         <action selector="didTapSpaceButton" destination="-1" eventType="touchUpInside" id="dxw-CU-wbi"/>
                                     </connections>
                                 </button>
                                 <button opaque="NO" contentMode="scaleToFill" horizontalCompressionResistancePriority="751" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="OYI-X9-HDY" userLabel="Back">
-                                    <rect key="frame" x="270.66666666666669" y="0.0" width="119.33333333333331" height="38.333333333333336"/>
+                                    <rect key="frame" x="279.66666666666669" y="0.0" width="104.33333333333331" height="61.666666666666664"/>
+                                    <color key="backgroundColor" systemColor="systemFillColor"/>
                                     <accessibility key="accessibilityConfiguration" label="Back"/>
-                                    <state key="normal" title="Button"/>
-                                    <buttonConfiguration key="configuration" style="plain" image="arrow.turn.down.left" catalog="system" title=""/>
+                                    <fontDescription key="fontDescription" style="UICTFontTextStyleBody"/>
+                                    <color key="tintColor" systemColor="labelColor"/>
+                                    <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                                    <state key="normal" title="" image="arrow.turn.down.left" catalog="system"/>
                                     <connections>
                                         <action selector="didTapEnterButton" destination="-1" eventType="touchUpInside" id="Peg-ES-Fd5"/>
                                     </connections>
@@ -362,10 +457,10 @@
             <viewLayoutGuide key="safeArea" id="vUN-kp-3ea"/>
             <color key="backgroundColor" systemColor="systemBackgroundColor"/>
             <constraints>
-                <constraint firstItem="ePP-3C-VKD" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" id="0Un-Zj-aPa"/>
-                <constraint firstAttribute="trailing" secondItem="ePP-3C-VKD" secondAttribute="trailing" id="Cgh-IW-qMR"/>
-                <constraint firstAttribute="bottom" secondItem="ePP-3C-VKD" secondAttribute="bottom" id="hW0-oR-Dnr"/>
-                <constraint firstItem="ePP-3C-VKD" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" id="wrO-1G-peV"/>
+                <constraint firstItem="ePP-3C-VKD" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" constant="8" id="0Un-Zj-aPa"/>
+                <constraint firstAttribute="trailing" secondItem="ePP-3C-VKD" secondAttribute="trailing" constant="3" id="Cgh-IW-qMR"/>
+                <constraint firstAttribute="bottom" secondItem="ePP-3C-VKD" secondAttribute="bottom" constant="8" id="hW0-oR-Dnr"/>
+                <constraint firstItem="ePP-3C-VKD" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" constant="3" id="wrO-1G-peV"/>
             </constraints>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
             <point key="canvasLocation" x="130.76923076923077" y="-12.085308056872037"/>
@@ -375,8 +470,14 @@
         <image name="arrow.turn.down.left" catalog="system" width="128" height="99"/>
         <image name="delete.left" catalog="system" width="128" height="102"/>
         <image name="shift" catalog="system" width="128" height="106"/>
+        <systemColor name="labelColor">
+            <color red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </systemColor>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+        <systemColor name="systemFillColor">
+            <color red="0.47058823529411764" green="0.47058823529411764" blue="0.50196078431372548" alpha="0.20000000000000001" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
     </resources>
 </document>
