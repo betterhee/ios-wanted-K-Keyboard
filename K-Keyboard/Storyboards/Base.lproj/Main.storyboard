@@ -272,6 +272,9 @@
                                                     </userDefinedRuntimeAttribute>
                                                     <userDefinedRuntimeAttribute type="boolean" keyPath="titleLabel?.adjustsFontForContentSizeCategory" value="YES"/>
                                                 </userDefinedRuntimeAttributes>
+                                                <connections>
+                                                    <action selector="didTapChargeButton:" destination="L5w-Se-Lf5" eventType="touchUpInside" id="PwC-Vb-Dze"/>
+                                                </connections>
                                             </button>
                                         </subviews>
                                     </stackView>

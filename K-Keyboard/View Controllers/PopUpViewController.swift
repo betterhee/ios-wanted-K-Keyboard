@@ -22,4 +22,8 @@ class PopUpViewController: UIViewController {
         rightButton.setTitle("", for: .normal)
         chargeButton.contentEdgeInsets = UIEdgeInsets(top: 4, left: 10, bottom: 4, right: 10)
     }
+    
+    @IBAction func didTapChargeButton(_ sender: UIButton) {
+        dismiss(animated: false)
+    }
 }
