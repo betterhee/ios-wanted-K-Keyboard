@@ -123,6 +123,7 @@ final class ThemeViewController: UIViewController {
             reviewTextField.isHidden = false
             purchaseOrSaveButton.setTitle("작성", for: .normal)
             purchaseInformationView.removeFromSuperview()
+            performSegue(withIdentifier: "showPopUpView", sender: nil)
         } else {
             didTapSaveButton()
         }

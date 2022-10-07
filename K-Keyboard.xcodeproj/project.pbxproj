@@ -26,6 +26,7 @@
 		63487F3F28E2EA5E0033CF32 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 63487F3D28E2EA5E0033CF32 /* Main.storyboard */; };
 		63487F4128E2EA5E0033CF32 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 63487F4028E2EA5E0033CF32 /* Assets.xcassets */; };
 		63487F4428E2EA5E0033CF32 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 63487F4228E2EA5E0033CF32 /* LaunchScreen.storyboard */; };
+		FD76D6E728F01E7500C08054 /* PopUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD76D6E628F01E7500C08054 /* PopUpViewController.swift */; };
 		FD9C017028EE07430068153B /* Section.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD9C016F28EE07430068153B /* Section.swift */; };
 		FD9C017228EE079E0068153B /* Item.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD9C017128EE079E0068153B /* Item.swift */; };
 		FD9C017428EE07F40068153B /* MockDataController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD9C017328EE07F40068153B /* MockDataController.swift */; };
@@ -89,6 +90,7 @@
 		63487F4028E2EA5E0033CF32 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		63487F4328E2EA5E0033CF32 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		63487F4528E2EA5E0033CF32 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		FD76D6E628F01E7500C08054 /* PopUpViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PopUpViewController.swift; sourceTree = "<group>"; };
 		FD9C016F28EE07430068153B /* Section.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Section.swift; sourceTree = "<group>"; };
 		FD9C017128EE079E0068153B /* Item.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Item.swift; sourceTree = "<group>"; };
 		FD9C017328EE07F40068153B /* MockDataController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockDataController.swift; sourceTree = "<group>"; };
@@ -196,6 +198,7 @@
 			children = (
 				FD9C017A28EE0AAC0068153B /* ThemeViewController.swift */,
 				FD9C017D28EE0DB10068153B /* ThemeViewController+UICollectionViewCompositionalLayout.swift */,
+				FD76D6E628F01E7500C08054 /* PopUpViewController.swift */,
 			);
 			path = "View Controllers";
 			sourceTree = "<group>";
@@ -426,6 +429,7 @@
 				5D8B094D28EFDB58003EC4F3 /* PaddingLabel.swift in Sources */,
 				FD9C018B28EE16FD0068153B /* SectionHeaderView.swift in Sources */,
 				5DDD796D28EFFA1600EE0ABA /* UIScrollView+Extension.swift in Sources */,
+				FD76D6E728F01E7500C08054 /* PopUpViewController.swift in Sources */,
 				FD9C017B28EE0AAC0068153B /* ThemeViewController.swift in Sources */,
 				FD9C017028EE07430068153B /* Section.swift in Sources */,
 				FD9C017728EE09150068153B /* EventCell.swift in Sources */,
