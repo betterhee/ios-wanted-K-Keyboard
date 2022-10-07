@@ -19,6 +19,8 @@
 		5D7479AC28EB2ABE009E5A09 /* UITextDocumentProxy+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D7479AB28EB2ABE009E5A09 /* UITextDocumentProxy+Extension.swift */; };
 		5D7479AE28EB418F009E5A09 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D7479AD28EB418F009E5A09 /* Constants.swift */; };
 		5D8B094D28EFDB58003EC4F3 /* PaddingLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D8B094C28EFDB58003EC4F3 /* PaddingLabel.swift */; };
+		5DDD796B28EFF4B900EE0ABA /* UITextField+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5DDD796A28EFF4B900EE0ABA /* UITextField+Extension.swift */; };
+		5DDD796D28EFFA1600EE0ABA /* UIScrollView+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5DDD796C28EFFA1600EE0ABA /* UIScrollView+Extension.swift */; };
 		63487F3828E2EA5E0033CF32 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63487F3728E2EA5E0033CF32 /* AppDelegate.swift */; };
 		63487F3A28E2EA5E0033CF32 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63487F3928E2EA5E0033CF32 /* SceneDelegate.swift */; };
 		63487F3F28E2EA5E0033CF32 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 63487F3D28E2EA5E0033CF32 /* Main.storyboard */; };
@@ -78,6 +80,8 @@
 		5D7479AB28EB2ABE009E5A09 /* UITextDocumentProxy+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UITextDocumentProxy+Extension.swift"; sourceTree = "<group>"; };
 		5D7479AD28EB418F009E5A09 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		5D8B094C28EFDB58003EC4F3 /* PaddingLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PaddingLabel.swift; sourceTree = "<group>"; };
+		5DDD796A28EFF4B900EE0ABA /* UITextField+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UITextField+Extension.swift"; sourceTree = "<group>"; };
+		5DDD796C28EFFA1600EE0ABA /* UIScrollView+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIScrollView+Extension.swift"; sourceTree = "<group>"; };
 		63487F3428E2EA5E0033CF32 /* K-Keyboard.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "K-Keyboard.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		63487F3728E2EA5E0033CF32 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		63487F3928E2EA5E0033CF32 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -205,6 +209,15 @@
 			path = Storyboards;
 			sourceTree = "<group>";
 		};
+		5DDD796928EFF4A400EE0ABA /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				5DDD796A28EFF4B900EE0ABA /* UITextField+Extension.swift */,
+				5DDD796C28EFFA1600EE0ABA /* UIScrollView+Extension.swift */,
+			);
+			path = Extensions;
+			sourceTree = "<group>";
+		};
 		5DFFA0F128EE993D009252E6 /* Views */ = {
 			isa = PBXGroup;
 			children = (
@@ -240,6 +253,7 @@
 				FD9C016E28EE072E0068153B /* Models */,
 				5D986A5928E571AF0010606C /* View Controllers */,
 				5DFFA0F128EE993D009252E6 /* Views */,
+				5DDD796928EFF4A400EE0ABA /* Extensions */,
 				5D986A5A28E577060010606C /* Storyboards */,
 				5D986A5828E5711F0010606C /* Supporting Files */,
 			);
@@ -408,8 +422,10 @@
 				63487F3A28E2EA5E0033CF32 /* SceneDelegate.swift in Sources */,
 				FD9C018028EE101D0068153B /* ReactionCell.swift in Sources */,
 				FD9C017E28EE0DB10068153B /* ThemeViewController+UICollectionViewCompositionalLayout.swift in Sources */,
+				5DDD796B28EFF4B900EE0ABA /* UITextField+Extension.swift in Sources */,
 				5D8B094D28EFDB58003EC4F3 /* PaddingLabel.swift in Sources */,
 				FD9C018B28EE16FD0068153B /* SectionHeaderView.swift in Sources */,
+				5DDD796D28EFFA1600EE0ABA /* UIScrollView+Extension.swift in Sources */,
 				FD9C017B28EE0AAC0068153B /* ThemeViewController.swift in Sources */,
 				FD9C017028EE07430068153B /* Section.swift in Sources */,
 				FD9C017728EE09150068153B /* EventCell.swift in Sources */,

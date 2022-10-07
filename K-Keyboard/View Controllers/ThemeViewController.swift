@@ -9,23 +9,54 @@ import UIKit
 
 final class ThemeViewController: UIViewController {
     
-    var collectionView: UICollectionView! = nil
-    var dataSource: UICollectionViewDiffableDataSource<Section, Item>! = nil
+    @IBOutlet private var reviewTextField: UITextField!
+    @IBOutlet private var toolbar: UIToolbar!
+    @IBOutlet private var purchaseOrSaveButton: UIButton!
+    @IBOutlet private var purchaseInformationView: UIStackView!
+    @IBOutlet private var toolbarBottomContraint: NSLayoutConstraint!
+
+    private var collectionView: UICollectionView!
+    private var dataSource: UICollectionViewDiffableDataSource<Section, Item>!
+    private var isPurchased: Bool = false
+
+    // MARK: View Life Cycle
 
     override func viewDidLoad() {
         super.viewDidLoad()
+
         configureHierarchy()
         configureDataSource()
         configureSnapshot()
     }
 
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+
+        addKeyboardNoticiationObserver()
+    }
+
+    override func viewWillDisappear(_ animated: Bool)
+    {
+        super.viewWillDisappear(animated)
+
+        removeKeyboardNotificationObserver()
+    }
+
+    // MARK: Functions
+
     private func configureHierarchy() {
-        collectionView = UICollectionView(frame: view.bounds, collectionViewLayout: createLayout())
-        collectionView.autoresizingMask = [.flexibleWidth, .flexibleHeight]
-        let toolBarHeight = navigationController!.toolbar.frame.height
-        collectionView.contentInset = UIEdgeInsets(top: 0, left: 0, bottom: toolBarHeight, right: 0)
+        collectionView = UICollectionView(frame: .zero, collectionViewLayout: createLayout())
+        collectionView.translatesAutoresizingMaskIntoConstraints = false
         collectionView.backgroundColor = .systemBackground
+
         view.insertSubview(collectionView, at: 0)
+
+        NSLayoutConstraint.activate([
+            collectionView.topAnchor.constraint(equalTo: view.topAnchor),
+            collectionView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
+            collectionView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
+            collectionView.bottomAnchor.constraint(equalTo: toolbar.topAnchor),
+        ])
     }
     
     private func configureDataSource() {
@@ -83,9 +114,57 @@ final class ThemeViewController: UIViewController {
         dataSource.apply(snapshot, animatingDifferences: true)
     }
 
+    // MARK: Action Handlers
 
-    @IBAction func didTapPruchaseAndSaveButton() {
-        print(#function)
+    @IBAction
+    private func didTapPruchaseAndSaveButton() {
+        if !isPurchased {
+            isPurchased = true
+            reviewTextField.isHidden = false
+            purchaseOrSaveButton.setTitle("작성", for: .normal)
+            purchaseInformationView.removeFromSuperview()
+        } else {
+            didTapSaveButton()
+        }
+    }
+
+    private func didTapSaveButton() {
+        if let content = reviewTextField.text,
+           !content.isEmpty {
+            let review: Item = .review(.init(content: content))
+            var snapshot = dataSource.snapshot()
+            snapshot.appendItems([review], toSection: .review)
+            dataSource.apply(snapshot)
+        }
+        reviewTextField.clear()
+        view.endEditing(true)
+        collectionView.scrollToBottom(animated: false)
+    }
+
+    // MARK: Keyboard
+
+    private func addKeyboardNoticiationObserver() {
+        NotificationCenter.default.addObserver(self, selector: #selector(willShowKeyboard), name: UIResponder.keyboardWillShowNotification, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(willHideKeyboard), name: UIResponder.keyboardWillHideNotification, object: nil)
+    }
+
+    private func removeKeyboardNotificationObserver() {
+        NotificationCenter.default.removeObserver(self, name: UIResponder.keyboardWillHideNotification, object: nil)
+        NotificationCenter.default.removeObserver(self, name: UIResponder.keyboardWillShowNotification, object: nil)
+    }
+
+    @objc
+    private func willShowKeyboard(_ notification: Notification) {
+        if let userInfo = notification.userInfo,
+           let keyboardFrame = userInfo[UIResponder.keyboardFrameEndUserInfoKey] as? NSValue {
+            let keyboardHeight = keyboardFrame.cgRectValue.height
+            toolbarBottomContraint.constant = keyboardHeight
+        }
+    }
+
+    @objc
+    private func willHideKeyboard(_ notification: Notification) {
+        toolbarBottomContraint.constant = 0
     }
 }
 
@@ -146,8 +225,13 @@ extension ThemeViewController {
         return UICollectionView.SupplementaryRegistration(
             elementKind: SupplymentaryItem.header.rawValue
         ) { supplementaryView, _, _ in
-            var owner = Owner(nickName: "크리에이터명", themeName: "앙무", themeNickName: "코핀", themeImagePath: "theme.png")
-            owner.numberOfConsumer = 78
+            let owner = Owner(
+                name: "크리에이터네임",
+                themeName: "앙무",
+                themeNickName: "코핀",
+                themeImagePath: "theme.png",
+                numberOfConsumer: 78
+            )
             supplementaryView.updateUI(with: owner)
         }
     }

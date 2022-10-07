@@ -47,9 +47,15 @@ struct Review: Hashable {
 }
 
 struct Owner: Hashable {
-    let nickName: String
+    let name: String
     var themeName: String
     var themeNickName: String
     var themeImagePath: String
-    var numberOfConsumer: Int = 0
+    var numberOfConsumer: Int
+}
+
+extension Review {
+    init(content: String) {
+        self.init(content: content, nickName: "o달밤o", time: Date(), isOwner: false)
+    }
 }
