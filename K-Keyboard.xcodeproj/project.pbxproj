@@ -18,6 +18,7 @@
 		5D7479A928EB2249009E5A09 /* KeyCommand.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D7479A828EB2249009E5A09 /* KeyCommand.swift */; };
 		5D7479AC28EB2ABE009E5A09 /* UITextDocumentProxy+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D7479AB28EB2ABE009E5A09 /* UITextDocumentProxy+Extension.swift */; };
 		5D7479AE28EB418F009E5A09 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D7479AD28EB418F009E5A09 /* Constants.swift */; };
+		5D8B094D28EFDB58003EC4F3 /* PaddingLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D8B094C28EFDB58003EC4F3 /* PaddingLabel.swift */; };
 		63487F3828E2EA5E0033CF32 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63487F3728E2EA5E0033CF32 /* AppDelegate.swift */; };
 		63487F3A28E2EA5E0033CF32 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63487F3928E2EA5E0033CF32 /* SceneDelegate.swift */; };
 		63487F3F28E2EA5E0033CF32 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 63487F3D28E2EA5E0033CF32 /* Main.storyboard */; };
@@ -37,7 +38,6 @@
 		FD9C018828EE16350068153B /* SupplymentaryItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD9C018728EE16350068153B /* SupplymentaryItem.swift */; };
 		FD9C018B28EE16FD0068153B /* SectionHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD9C018A28EE16FD0068153B /* SectionHeaderView.swift */; };
 		FD9C018F28EE175D0068153B /* HeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD9C018E28EE175D0068153B /* HeaderView.swift */; };
-		FD9C019128EE17680068153B /* FooterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD9C019028EE17680068153B /* FooterView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -77,6 +77,7 @@
 		5D7479A828EB2249009E5A09 /* KeyCommand.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeyCommand.swift; sourceTree = "<group>"; };
 		5D7479AB28EB2ABE009E5A09 /* UITextDocumentProxy+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UITextDocumentProxy+Extension.swift"; sourceTree = "<group>"; };
 		5D7479AD28EB418F009E5A09 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
+		5D8B094C28EFDB58003EC4F3 /* PaddingLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PaddingLabel.swift; sourceTree = "<group>"; };
 		63487F3428E2EA5E0033CF32 /* K-Keyboard.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "K-Keyboard.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		63487F3728E2EA5E0033CF32 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		63487F3928E2EA5E0033CF32 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -98,7 +99,6 @@
 		FD9C018728EE16350068153B /* SupplymentaryItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SupplymentaryItem.swift; sourceTree = "<group>"; };
 		FD9C018A28EE16FD0068153B /* SectionHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SectionHeaderView.swift; sourceTree = "<group>"; };
 		FD9C018E28EE175D0068153B /* HeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeaderView.swift; sourceTree = "<group>"; };
-		FD9C019028EE17680068153B /* FooterView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FooterView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -208,6 +208,7 @@
 		5DFFA0F128EE993D009252E6 /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				5D8B094C28EFDB58003EC4F3 /* PaddingLabel.swift */,
 				FD9C017528EE08C80068153B /* Cells */,
 				FD9C018928EE16A90068153B /* Supplymentary Items */,
 			);
@@ -274,7 +275,6 @@
 			children = (
 				FD9C018A28EE16FD0068153B /* SectionHeaderView.swift */,
 				FD9C018E28EE175D0068153B /* HeaderView.swift */,
-				FD9C019028EE17680068153B /* FooterView.swift */,
 			);
 			path = "Supplymentary Items";
 			sourceTree = "<group>";
@@ -400,7 +400,6 @@
 				FD9C017228EE079E0068153B /* Item.swift in Sources */,
 				FD9C018828EE16350068153B /* SupplymentaryItem.swift in Sources */,
 				FD9C017428EE07F40068153B /* MockDataController.swift in Sources */,
-				FD9C019128EE17680068153B /* FooterView.swift in Sources */,
 				FD9C018428EE12A90068153B /* BannerCell.swift in Sources */,
 				63487F3828E2EA5E0033CF32 /* AppDelegate.swift in Sources */,
 				FD9C018F28EE175D0068153B /* HeaderView.swift in Sources */,
@@ -409,6 +408,7 @@
 				63487F3A28E2EA5E0033CF32 /* SceneDelegate.swift in Sources */,
 				FD9C018028EE101D0068153B /* ReactionCell.swift in Sources */,
 				FD9C017E28EE0DB10068153B /* ThemeViewController+UICollectionViewCompositionalLayout.swift in Sources */,
+				5D8B094D28EFDB58003EC4F3 /* PaddingLabel.swift in Sources */,
 				FD9C018B28EE16FD0068153B /* SectionHeaderView.swift in Sources */,
 				FD9C017B28EE0AAC0068153B /* ThemeViewController.swift in Sources */,
 				FD9C017028EE07430068153B /* Section.swift in Sources */,

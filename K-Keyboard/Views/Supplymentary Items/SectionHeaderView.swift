@@ -11,8 +11,6 @@ final class SectionHeaderView: UICollectionReusableView {
 
     // MARK: Properties
 
-    static let elementKind = "section-header"
-
     private let titleLabel: UILabel = {
         let label = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false

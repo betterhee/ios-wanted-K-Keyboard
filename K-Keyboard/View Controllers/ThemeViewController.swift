@@ -18,12 +18,14 @@ final class ThemeViewController: UIViewController {
         configureDataSource()
         configureSnapshot()
     }
-    
+
     private func configureHierarchy() {
-        collectionView = UICollectionView.init(frame: view.bounds, collectionViewLayout: createLayout())
+        collectionView = UICollectionView(frame: view.bounds, collectionViewLayout: createLayout())
         collectionView.autoresizingMask = [.flexibleWidth, .flexibleHeight]
+        let toolBarHeight = navigationController!.toolbar.frame.height
+        collectionView.contentInset = UIEdgeInsets(top: 0, left: 0, bottom: toolBarHeight, right: 0)
         collectionView.backgroundColor = .systemBackground
-        view.addSubview(collectionView)
+        view.insertSubview(collectionView, at: 0)
     }
     
     private func configureDataSource() {
@@ -35,7 +37,6 @@ final class ThemeViewController: UIViewController {
         let reviewCellRegistration = reviewCellRegistration()
         let sectionHeaderViewRegistration = sectionHeaderViewRegistration()
         let headerViewRegistration = headerViewRegistration()
-        let footerViewRegistration = footerViewRegistration()
         
         dataSource = UICollectionViewDiffableDataSource<Section, Item>(
             collectionView: collectionView,
@@ -57,18 +58,19 @@ final class ThemeViewController: UIViewController {
             })
         
         dataSource.supplementaryViewProvider = { _, kind, index in
+            guard let kind = SupplymentaryItem(rawValue: kind) else { return nil }
             switch kind {
-            case SectionHeaderView.elementKind:
-                return self.collectionView.dequeueConfiguredReusableSupplementary(using: sectionHeaderViewRegistration,
-                                                                                  for: index)
-            case HeaderView.elementKind:
-                return self.collectionView.dequeueConfiguredReusableSupplementary(using: headerViewRegistration,
-                                                                                  for: index)
-            case FooterView.elementKind:
-                return self.collectionView.dequeueConfiguredReusableSupplementary(using: footerViewRegistration, for: index)
-            default: break
+            case .sectionHeader:
+                return self.collectionView.dequeueConfiguredReusableSupplementary(
+                    using: sectionHeaderViewRegistration,
+                    for: index
+                )
+            case .header:
+                return self.collectionView.dequeueConfiguredReusableSupplementary(
+                    using: headerViewRegistration,
+                    for: index
+                )
             }
-            return nil
         }
     }
     
@@ -79,6 +81,11 @@ final class ThemeViewController: UIViewController {
             snapshot.appendItems(MockDataController.shared.items(for: section), toSection: section)
         }
         dataSource.apply(snapshot, animatingDifferences: true)
+    }
+
+
+    @IBAction func didTapPruchaseAndSaveButton() {
+        print(#function)
     }
 }
 
@@ -122,33 +129,26 @@ extension ThemeViewController {
     
     private func sectionHeaderViewRegistration() -> UICollectionView.SupplementaryRegistration<SectionHeaderView> {
         return UICollectionView.SupplementaryRegistration<SectionHeaderView>(
-            elementKind: SectionHeaderView.elementKind,
-            handler: { supplementaryView, _, indexPath in
-                guard let section = Section(rawValue: indexPath.section) else { return }
-                if case .review = section {
-                    let snapshot = self.dataSource.snapshot()
-                    let numberOfReviews = snapshot.numberOfItems(inSection: section)
-                    supplementaryView.updateUI(section.title, numberOfReviews - 1)
-                } else {
-                    supplementaryView.updateUI(section.title, nil)
-                }
-            })
+            elementKind: SupplymentaryItem.sectionHeader.rawValue
+        ) { supplementaryView, _, indexPath in
+            guard let section = Section(rawValue: indexPath.section) else { return }
+            if case .review = section {
+                let snapshot = self.dataSource.snapshot()
+                let numberOfReviews = snapshot.numberOfItems(inSection: section)
+                supplementaryView.updateUI(section.title, numberOfReviews - 1)
+            } else {
+                supplementaryView.updateUI(section.title, nil)
+            }
+        }
     }
     
     private func headerViewRegistration() -> UICollectionView.SupplementaryRegistration<HeaderView> {
         return UICollectionView.SupplementaryRegistration(
-            elementKind: HeaderView.elementKind
+            elementKind: SupplymentaryItem.header.rawValue
         ) { supplementaryView, _, _ in
             var owner = Owner(nickName: "크리에이터명", themeName: "앙무", themeNickName: "코핀", themeImagePath: "theme.png")
             owner.numberOfConsumer = 78
-            supplementaryView.updateUI(owner: owner)
-        }
-    }
-    
-    private func footerViewRegistration() -> UICollectionView.SupplementaryRegistration<FooterView> {
-        return UICollectionView.SupplementaryRegistration(elementKind: FooterView.elementKind) { supplementaryView, _, _ in
-            // TODO: - update할꺼 아직 없음
-            supplementaryView.updateUI()
+            supplementaryView.updateUI(with: owner)
         }
     }
 }

@@ -8,9 +8,8 @@
 import UIKit
 
 final class HeaderView: UICollectionReusableView {
-    static let elementKind = "layout-header"
     
-    var themeImageView: UIImageView = {
+    private let themeImageView: UIImageView = {
         let view = UIImageView()
         view.translatesAutoresizingMaskIntoConstraints = false
         view.layer.cornerRadius = 15
@@ -21,7 +20,7 @@ final class HeaderView: UICollectionReusableView {
         return view
     }()
     
-    var themeNameLabel: UILabel = {
+    private let themeNameLabel: UILabel = {
         let label = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false
         label.font = .preferredFont(forTextStyle: .title3)
@@ -30,80 +29,83 @@ final class HeaderView: UICollectionReusableView {
         return label
     }()
     
-    var themeNickNameLabel: UILabel = {
+    private let themeNickNameLabel: UILabel = {
         let label = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false
         label.font = .preferredFont(forTextStyle: .footnote)
         label.adjustsFontForContentSizeCategory = true
-        label.textColor = #colorLiteral(red: 0.501960814, green: 0.501960814, blue: 0.501960814, alpha: 1)
+        label.textColor = .secondaryLabel
         return label
     }()
     
-    var numberOfConsumerLabel: UILabel = {
+    private let numberOfConsumerLabel: UILabel = {
         let label = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false
         label.font = .preferredFont(forTextStyle: .footnote)
         label.adjustsFontForContentSizeCategory = true
-        label.textColor = #colorLiteral(red: 0.8078431487, green: 0.02745098062, blue: 0.3333333433, alpha: 1)
-        label.numberOfLines = 1
+        label.textColor = .systemPink
         return label
     }()
     
-    let consumerDescriptionLabel: UILabel = {
+    private let consumerDescriptionLabel: UILabel = {
        let label = UILabel()
         label.text = "명이 참여했어요!"
         label.translatesAutoresizingMaskIntoConstraints = false
         label.font = .preferredFont(forTextStyle: .footnote)
         label.adjustsFontForContentSizeCategory = true
-        label.textColor = #colorLiteral(red: 0.501960814, green: 0.501960814, blue: 0.501960814, alpha: 1)
-        label.numberOfLines = 1
+        label.textColor = .secondaryLabel
         return label
     }()
-    
+
+    // MARK: Init
+
     override init(frame: CGRect) {
         super.init(frame: frame)
+
         configure()
     }
     
     required init?(coder: NSCoder) {
         fatalError("not implemnted")
     }
-    
-    func updateUI(owner: Owner) {
-        themeImageView.image = UIImage(named: owner.themeImagePath)
-        themeNameLabel.text = owner.themeName
-        themeNickNameLabel.text = owner.themeNickName
-        numberOfConsumerLabel.text = String(owner.numberOfConsumer)
 
-    }
-}
+    // MARK: Functions
 
-extension HeaderView {
     private func configure() {
-        addSubview(themeImageView)
-        addSubview(themeNameLabel)
-        addSubview(themeNickNameLabel)
-        addSubview(numberOfConsumerLabel)
-        addSubview(consumerDescriptionLabel)
-        
+        [
+            themeImageView,
+            themeNameLabel,
+            themeNickNameLabel,
+            numberOfConsumerLabel,
+            consumerDescriptionLabel
+        ].forEach { addSubview($0) }
+
         NSLayoutConstraint.activate([
             themeImageView.topAnchor.constraint(equalTo: topAnchor),
             themeImageView.leadingAnchor.constraint(equalTo: leadingAnchor),
             themeImageView.trailingAnchor.constraint(equalTo: trailingAnchor),
-            
+
             themeNameLabel.topAnchor.constraint(equalTo: themeImageView.bottomAnchor, constant: 20),
             themeNameLabel.leadingAnchor.constraint(equalTo: leadingAnchor),
-            
+
             themeNickNameLabel.topAnchor.constraint(equalTo: themeNameLabel.bottomAnchor, constant: 10),
             themeNickNameLabel.leadingAnchor.constraint(equalTo: leadingAnchor),
-            
+
             numberOfConsumerLabel.topAnchor.constraint(equalTo: themeNickNameLabel.bottomAnchor, constant: 20),
             numberOfConsumerLabel.leadingAnchor.constraint(equalTo: leadingAnchor),
             numberOfConsumerLabel.bottomAnchor.constraint(equalTo: bottomAnchor, constant: -50),
-            
+
             consumerDescriptionLabel.centerYAnchor.constraint(equalTo: numberOfConsumerLabel.centerYAnchor),
             consumerDescriptionLabel.leadingAnchor.constraint(equalTo: numberOfConsumerLabel.trailingAnchor),
             consumerDescriptionLabel.trailingAnchor.constraint(equalTo: trailingAnchor)
         ])
     }
+    
+    func updateUI(with owner: Owner) {
+        themeImageView.image = UIImage(named: owner.themeImagePath)
+        themeNameLabel.text = owner.themeName
+        themeNickNameLabel.text = owner.themeNickName
+        numberOfConsumerLabel.text = String(owner.numberOfConsumer)
+    }
 }
+

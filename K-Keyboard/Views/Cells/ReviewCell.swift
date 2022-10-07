@@ -17,18 +17,18 @@ final class ReviewCell: UICollectionViewCell {
         return view
     }()
     
-    private let nickNameButton: UIButton = {
-        let button = UIButton()
-        button.translatesAutoresizingMaskIntoConstraints = false
-        button.isEnabled = true
-        button.titleLabel?.font = .preferredFont(forTextStyle: .caption2)
-        button.titleLabel?.adjustsFontForContentSizeCategory = true
-        button.titleLabel?.numberOfLines = 1
-        button.setTitleColor(.white, for: .normal)
-        button.backgroundColor = #colorLiteral(red: 0.8078431487, green: 0.02745098062, blue: 0.3333333433, alpha: 1)
-        button.contentEdgeInsets = UIEdgeInsets(top: 5, left: 5, bottom: 5, right: 5)
-        button.layer.cornerRadius = CGFloat(10)
-        return button
+    private let ownerLabel: UILabel = {
+        let label = PaddingLabel()
+        label.translatesAutoresizingMaskIntoConstraints = false
+        label.font = .preferredFont(forTextStyle: .caption2)
+        label.adjustsFontForContentSizeCategory = true
+        label.textColor = .systemBackground
+        label.backgroundColor = .systemPink
+        label.layer.cornerRadius = 10
+        label.clipsToBounds = true
+        label.textAlignment = .center
+        label.text = "크리에이터"
+        return label
     }()
     
     private let view: UIView = {
@@ -106,7 +106,8 @@ final class ReviewCell: UICollectionViewCell {
             view,
             vStackView,
             timeLabel,
-            reportButton
+            reportButton,
+            ownerLabel
         ].forEach { contentView.addSubview($0) }
 
         [nickNameLabel, reviewLabel].forEach { vStackView.addArrangedSubview($0) }
@@ -131,16 +132,11 @@ final class ReviewCell: UICollectionViewCell {
 
             reportButton.centerYAnchor.constraint(equalTo: timeLabel.centerYAnchor),
             reportButton.leadingAnchor.constraint(equalTo: timeLabel.trailingAnchor, constant: 10),
-            reportButton.bottomAnchor.constraint(equalTo: contentView.bottomAnchor, constant: -10)
-        ])
-    }
+            reportButton.bottomAnchor.constraint(equalTo: contentView.bottomAnchor, constant: -10),
 
-    private func ownerButtonOn() {
-        contentView.addSubview(nickNameButton)
-
-        NSLayoutConstraint.activate([
-            nickNameButton.centerXAnchor.constraint(equalTo: profileImageView.centerXAnchor),
-            nickNameButton.centerYAnchor.constraint(equalTo: profileImageView.bottomAnchor)
+            ownerLabel.leadingAnchor.constraint(equalTo: profileImageView.leadingAnchor, constant: -5),
+            ownerLabel.trailingAnchor.constraint(equalTo: profileImageView.trailingAnchor, constant: 5),
+            ownerLabel.centerYAnchor.constraint(equalTo: profileImageView.bottomAnchor),
         ])
     }
 
@@ -148,10 +144,7 @@ final class ReviewCell: UICollectionViewCell {
         profileImageView.image = UIImage(named: "profile.png")
         nickNameLabel.text = item.nickName
         reviewLabel.text = item.content
-        if item.isOwner == true {
-            ownerButtonOn()
-            nickNameButton.setTitle(item.nickName, for: .normal)
-        }
+        ownerLabel.isHidden = !item.isOwner
         // TODO: - 시간계산하기 (현재시간 - 작성시간)
         let formatter = DateFormatter()
         formatter.dateFormat = "mm분"
