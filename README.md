@@ -94,7 +94,7 @@ case .leadingConsonantAndSingleVowel:
 
 # Development Tool
 
--   Frameworks: UIKit
+-   Frameworks: UIKit, Custom Keyboard Extension
 -   Tools: Xcode 16
 -   Language: Swift 5
 <br>
